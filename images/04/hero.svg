@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <rect width="1600" height="1000" fill="#f3e9d2"/>
+  <rect x="20" y="20" width="1560" height="960" fill="none" stroke="#1a2342" stroke-width="3"/>
+  <rect x="36" y="36" width="1528" height="928" fill="none" stroke="#1a2342" stroke-width="1"/>
+  <g font-family="EB Garamond, Georgia, serif" fill="#1a2342" text-anchor="middle">
+    <text x="800.0" y="350.0" font-size="40" letter-spacing="6" font-weight="600">PLACEHOLDER</text>
+    <text x="800.0" y="500.0" font-size="50" font-style="italic">Friends Meeting House, 1808</text>
+    <text x="800.0" y="620.0" font-size="25">drop your image at this path to replace</text>
+  </g>
+</svg>
