@@ -37,6 +37,7 @@
 
   <h1 class="building-name">Friends Meeting House</h1>
   <p class="building-year">1808 &middot; South Main &amp; Woodstown Road</p>
+  <p class="reading-time">3-minute read &middot; Stop 2 of 5</p>
 
   <div class="rule-ornament" aria-hidden="true">
     <svg width="180" height="14" viewBox="0 0 180 14">
@@ -83,6 +84,7 @@
     <span class="label">Next on the Tour</span>
     <span class="destination">Stop 3 &middot; The Gaunt House</span>
     <span class="direction">Walk north on South Main toward the center of the village</span>
+    <span class="walk-time">About a 5-minute walk (0.25 miles north on Main).</span>
   </a>
 
   <a href="../01/" class="prev-stop"><span class="arrow">&lsaquo;</span> Stop 1 &middot; Old Town Hall</a>
@@ -143,6 +145,29 @@
     document.querySelectorAll('.tour-header a').forEach(function(a) {
       a.addEventListener('click', function() { send('nav_home', { from: location.pathname }); });
     });
+    // Photo lightbox
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<img alt=""><p class="caption"></p>';
+    document.body.appendChild(overlay);
+    document.querySelectorAll('.photo-strip img, .hero-image img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        overlay.querySelector('img').src = img.src;
+        var cap = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : null;
+        overlay.querySelector('.caption').textContent = cap ? cap.textContent : '';
+        overlay.classList.add('open');
+        if (typeof gtag === 'function') gtag('event', 'photo_zoom', { src: img.src });
+      });
+    });
+    overlay.addEventListener('click', function() { overlay.classList.remove('open'); });
+    // Track last-visited stop in localStorage
+    try {
+      var path = location.pathname.replace(/\//g, '');
+      if (/^0[1-5]$/.test(path)) {
+        localStorage.setItem('mhwalk_last_stop', path);
+        localStorage.setItem('mhwalk_last_visit', new Date().toISOString());
+      }
+    } catch (e) {}
   })();
 </script>
 </body>

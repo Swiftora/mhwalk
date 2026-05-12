@@ -134,6 +134,11 @@
 
   <div class="break" aria-hidden="true">⁂</div>
 
+  <div class="page-utilities">
+    <a href="#" class="util-link" onclick="window.print(); return false;">Print this tour</a>
+    <a href="#" class="util-link" id="share-link">Share this tour</a>
+  </div>
+
   <footer class="hths-footer">
     <p class="preamble">presented by the</p>
     <p class="society"><a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a></p>
@@ -172,6 +177,63 @@
     document.querySelectorAll('.tour-header a').forEach(function(a) {
       a.addEventListener('click', function() { send('nav_home', { from: location.pathname }); });
     });
+    // Photo lightbox
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<img alt=""><p class="caption"></p>';
+    document.body.appendChild(overlay);
+    document.querySelectorAll('.photo-strip img, .hero-image img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        overlay.querySelector('img').src = img.src;
+        var cap = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : null;
+        overlay.querySelector('.caption').textContent = cap ? cap.textContent : '';
+        overlay.classList.add('open');
+        if (typeof gtag === 'function') gtag('event', 'photo_zoom', { src: img.src });
+      });
+    });
+    overlay.addEventListener('click', function() { overlay.classList.remove('open'); });
+    // Track last-visited stop in localStorage
+    try {
+      var path = location.pathname.replace(/\//g, '');
+      if (/^0[1-5]$/.test(path)) {
+        localStorage.setItem('mhwalk_last_stop', path);
+        localStorage.setItem('mhwalk_last_visit', new Date().toISOString());
+      }
+    } catch (e) {}
+    // Share link
+    document.getElementById('share-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      var data = {
+        title: 'Mullica Hill Historic Walking Tour',
+        text: 'A self-guided walk through five historic stops in Mullica Hill, NJ.',
+        url: 'https://mhwalk.com/'
+      };
+      if (navigator.share) {
+        navigator.share(data).catch(function() {});
+      } else {
+        window.location.href = 'mailto:?subject=' + encodeURIComponent(data.title) + '&body=' + encodeURIComponent(data.text + '\n\n' + data.url);
+      }
+      if (typeof gtag === 'function') gtag('event', 'share_tour', { method: navigator.share ? 'native' : 'mailto' });
+    });
+  })();
+</script>
+<script>
+  (function() {
+    try {
+      var last = localStorage.getItem('mhwalk_last_stop');
+      var when = localStorage.getItem('mhwalk_last_visit');
+      if (last && when) {
+        var hoursAgo = (Date.now() - new Date(when).getTime()) / 36e5;
+        if (hoursAgo < 24) {
+          var resume = document.createElement('a');
+          resume.href = '/' + last + '/';
+          resume.className = 'resume-cta';
+          resume.innerHTML = '<span class="label">Resume Where You Left Off</span><span class="destination">Stop ' + parseInt(last) + ' &rsaquo;</span>';
+          var beginCta = document.querySelector('.begin-cta');
+          if (beginCta) beginCta.parentNode.insertBefore(resume, beginCta);
+        }
+      }
+    } catch (e) {}
   })();
 </script>
 </body>

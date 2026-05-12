@@ -37,6 +37,7 @@
 
   <h1 class="building-name">The Gaunt House</h1>
   <p class="building-year">c. 1885 &middot; 14 South Main Street</p>
+  <p class="reading-time">3-minute read &middot; Stop 3 of 5</p>
 
   <div class="rule-ornament" aria-hidden="true">
     <svg width="180" height="14" viewBox="0 0 180 14">
@@ -83,6 +84,7 @@
     <span class="label">Next on the Tour</span>
     <span class="destination">Stop 4 &middot; The Warehouse</span>
     <span class="direction">Continue north on South Main to the end of the village</span>
+    <span class="walk-time">About a 2-minute walk (500 feet north).</span>
   </a>
 
   <a href="../02/" class="prev-stop"><span class="arrow">&lsaquo;</span> Stop 2 &middot; Friends Meeting House</a>
@@ -143,6 +145,29 @@
     document.querySelectorAll('.tour-header a').forEach(function(a) {
       a.addEventListener('click', function() { send('nav_home', { from: location.pathname }); });
     });
+    // Photo lightbox
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<img alt=""><p class="caption"></p>';
+    document.body.appendChild(overlay);
+    document.querySelectorAll('.photo-strip img, .hero-image img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        overlay.querySelector('img').src = img.src;
+        var cap = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : null;
+        overlay.querySelector('.caption').textContent = cap ? cap.textContent : '';
+        overlay.classList.add('open');
+        if (typeof gtag === 'function') gtag('event', 'photo_zoom', { src: img.src });
+      });
+    });
+    overlay.addEventListener('click', function() { overlay.classList.remove('open'); });
+    // Track last-visited stop in localStorage
+    try {
+      var path = location.pathname.replace(/\//g, '');
+      if (/^0[1-5]$/.test(path)) {
+        localStorage.setItem('mhwalk_last_stop', path);
+        localStorage.setItem('mhwalk_last_visit', new Date().toISOString());
+      }
+    } catch (e) {}
   })();
 </script>
 </body>

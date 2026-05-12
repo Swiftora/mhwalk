@@ -136,6 +136,15 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     margin: 0 0 4px;
     font-feature-settings: "onum" 1;
 }
+.reading-time {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy-soft);
+    margin: 0 0 18px;
+    font-weight: 600;
+}
 
 /* ornamental rule under year */
 .rule-ornament {
@@ -299,6 +308,13 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     margin-top: 4px;
     color: rgba(251, 243, 223, 0.82);
     font-weight: 500;
+}
+.next-stop .walk-time {
+    display: block;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(251, 243, 223, 0.78);
+    margin-top: 6px;
 }
 
 .prev-stop {
@@ -626,6 +642,30 @@ footer.hths-footer .award {
     transition: background 0.15s ease;
 }
 .begin-cta:hover, .begin-cta:focus { background: var(--oxblood-soft); color: var(--cream-light); }
+.resume-cta {
+    display: block;
+    text-decoration: none;
+    margin: 36px -4px 6px;
+    padding: 24px 22px;
+    background: var(--navy);
+    color: var(--cream-light);
+    text-align: center;
+    transition: background 0.15s ease;
+}
+.resume-cta:hover, .resume-cta:focus { background: var(--navy-soft); color: var(--cream-light); }
+.resume-cta .label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(251, 243, 223, 0.78);
+    margin-bottom: 5px;
+}
+.resume-cta .destination {
+    font-size: 26px;
+    font-weight: 700;
+}
 .begin-cta .label {
     display: block;
     font-size: 11px;
@@ -639,6 +679,43 @@ footer.hths-footer .award {
     font-size: 26px;
     font-weight: 700;
 }
+
+/* ---------- Page utilities ---------- */
+.page-utilities {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule-faint);
+}
+.util-link {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--oxblood);
+    text-decoration: none;
+}
+.util-link:hover { text-decoration: underline; }
+
+/* ---------- Photo lightbox ---------- */
+.lightbox-overlay {
+    position: fixed; inset: 0;
+    background: rgba(26, 35, 66, 0.94);
+    display: none; align-items: center; justify-content: center;
+    z-index: 1000; padding: 32px;
+    cursor: zoom-out;
+}
+.lightbox-overlay.open { display: flex; }
+.lightbox-overlay img {
+    max-width: 100%; max-height: 90vh;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+.lightbox-overlay .caption {
+    position: absolute; bottom: 20px; left: 32px; right: 32px;
+    color: var(--cream-light); font-style: italic; font-size: 14px;
+    text-align: center;
+}
+.photo-strip img, .hero-image img { cursor: zoom-in; }
 
 /* ============================================================
    Responsive
