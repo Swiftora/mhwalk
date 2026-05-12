@@ -738,9 +738,30 @@ footer.hths-footer .award {
     font-weight: 700;
 }
 .end-card p { margin: 0 0 10px; font-size: 16px; line-height: 1.6; }
-.end-card ul { margin: 0; padding-left: 18px; }
-.end-card ul li { margin-bottom: 6px; font-size: 16px; line-height: 1.5; }
 .end-card .museum-hours { font-style: italic; color: var(--navy-soft); }
+.end-card .eat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.end-card .eat-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule-faint);
+    font-size: 15px;
+    line-height: 1.5;
+}
+.end-card .eat-list li:last-child { border-bottom: 0; }
+.end-card .eat-list strong { color: var(--navy); font-size: 16px; }
+.end-card .eat-list em { color: var(--navy-soft); display: block; margin: 2px 0 4px; }
+.end-card .eat-list a {
+    color: var(--oxblood);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.end-card .eat-list a:hover { text-decoration: underline; }
 .cta-inline {
     color: var(--oxblood);
     text-decoration: none;
