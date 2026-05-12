@@ -324,7 +324,7 @@ a:hover, a:focus { color: var(--oxblood-soft); }
 /* ---------- Feedback form ---------- */
 .feedback {
     margin: 56px -4px 32px;
-    padding: 28px 24px 24px;
+    padding: 28px 14px 24px;
     background: var(--cream-light);
     border-top: 1px solid var(--navy);
     border-bottom: 1px solid var(--navy);
@@ -345,7 +345,7 @@ a:hover, a:focus { color: var(--oxblood-soft); }
 }
 .feedback iframe {
     width: 100%;
-    height: 360px;
+    height: 720px;
     border: 0;
     background: transparent;
 }
