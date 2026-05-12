@@ -62,11 +62,16 @@ a:hover, a:focus { color: var(--oxblood-soft); }
 
 /* ---------- Tour header (every page) ---------- */
 .tour-header {
-    text-align: center;
-    padding: 6px 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--cream);
+    padding: 10px 0 12px;
     border-bottom: 2px solid var(--navy);
     margin-bottom: 8px;
-    position: relative;
+    text-align: center;
+    position: relative; /* fallback */
+    position: sticky;
 }
 .tour-header::after {
     content: '';
@@ -320,6 +325,59 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     margin: 26px 0 0;
 }
 .back-to-index:hover { color: var(--oxblood); }
+
+/* ---------- All-stops navigation ---------- */
+.all-stops {
+    margin: 36px 0 12px;
+    padding: 20px 0;
+    border-top: 1px solid var(--navy);
+    border-bottom: 1px solid var(--navy);
+}
+.all-stops .label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin: 0 0 14px;
+}
+.all-stops ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.all-stops li a {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 14px;
+    align-items: baseline;
+    padding: 10px 4px;
+    text-decoration: none;
+    color: var(--navy);
+    border-bottom: 1px solid var(--rule-faint);
+}
+.all-stops li:last-child a { border-bottom: 0; }
+.all-stops li a:hover { background: var(--cream-light); }
+.all-stops .num {
+    font-weight: 700;
+    font-size: 22px;
+    text-align: right;
+    color: var(--navy);
+}
+.all-stops .name {
+    font-size: 17px;
+    font-weight: 500;
+}
+.all-stops .here {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+}
+.all-stops li.current a { background: var(--cream-light); }
+.all-stops li.current .name { font-weight: 700; }
 
 /* ---------- Feedback form ---------- */
 .feedback {

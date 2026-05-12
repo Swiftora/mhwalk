@@ -147,5 +147,32 @@
   </footer>
 
 </main>
+<script>
+  (function() {
+    function send(event, params) {
+      if (typeof gtag === 'function') gtag('event', event, params || {});
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var ref = document.referrer || '';
+      var method = 'qr_or_direct';
+      if (ref.indexOf('mhwalk.com') > -1) method = 'in_site_nav';
+      else if (ref) method = 'external_referrer';
+      var path = location.pathname.replace(/\//g, '') || 'index';
+      send('stop_entry', { entry_method: method, stop_path: path, referrer: ref || '(none)' });
+    });
+    document.querySelectorAll('a.next-stop').forEach(function(a) {
+      a.addEventListener('click', function() { send('nav_next_stop', { from: location.pathname }); });
+    });
+    document.querySelectorAll('a.prev-stop').forEach(function(a) {
+      a.addEventListener('click', function() { send('nav_prev_stop', { from: location.pathname }); });
+    });
+    document.querySelectorAll('.all-stops a').forEach(function(a) {
+      a.addEventListener('click', function() { send('nav_all_stops_jump', { from: location.pathname, to: a.getAttribute('href') }); });
+    });
+    document.querySelectorAll('.tour-header a').forEach(function(a) {
+      a.addEventListener('click', function() { send('nav_home', { from: location.pathname }); });
+    });
+  })();
+</script>
 </body>
 </html>
