@@ -5,7 +5,8 @@
    cream, deep navy, oxblood, EB Garamond serif throughout.
    ============================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap');
 
 :root {
     --cream:        #f3e9d2;
@@ -29,12 +30,20 @@ body {
     margin: 0;
     background: var(--cream);
     color: var(--ink);
-    font-family: 'EB Garamond', 'Adobe Caslon Pro', Georgia, serif;
-    font-size: 19px;
-    line-height: 1.72;
-    font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+    font-family: 'Atkinson Hyperlegible', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* EB Garamond Bold for display elements only */
+.tour-title h1,
+.stop-marker .stop-number,
+.building-name,
+.story p.lead::first-letter {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-weight: 700;
 }
 
 /* Subtle paper-grain overlay so the cream is not flat */
@@ -176,8 +185,8 @@ a:hover, a:focus { color: var(--oxblood-soft); }
 
 /* ---------- Story body ---------- */
 .story {
-    font-size: 19.5px;
-    line-height: 1.78;
+    font-size: 18.5px;
+    line-height: 1.72;
     color: var(--ink);
     margin-top: 8px;
 }
@@ -195,20 +204,13 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     padding: 0 4px 0 0;
 }
 
-/* small-cap leading line after drop cap */
-.story p.lead::first-line {
-    font-variant: small-caps;
-    letter-spacing: 0.02em;
-    font-weight: 500;
-}
-
 /* Did-you-know epigraph */
 .did-you-know {
     margin: 38px 0;
     padding: 22px 24px 22px 26px;
     background: var(--cream-light);
     border-left: 4px solid var(--oxblood);
-    font-style: italic;
+    font-style: normal;
     font-size: 18px;
     line-height: 1.62;
     color: var(--navy);
