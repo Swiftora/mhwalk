@@ -418,17 +418,26 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     border-bottom: 1px solid var(--cream-deep);
 }
 .village-list li:last-child { border-bottom: none; }
+.village-list a.biz-name,
 .village-list .biz-name {
     display: block;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 18px;
     color: var(--navy);
+    text-decoration: none;
+}
+.village-list a.biz-name:hover,
+.village-list a.biz-name:focus {
+    color: var(--oxblood);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 .village-list .biz-addr {
     display: block;
     font-size: 13px;
     color: var(--navy-faint);
-    margin-top: 2px;
+    margin-top: 3px;
     font-style: italic;
 }
 .village-list .biz-desc {
@@ -437,6 +446,27 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     color: var(--navy);
     margin-top: 6px;
     line-height: 1.45;
+}
+.village-list .biz-links {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+}
+.village-list .biz-links a {
+    color: var(--oxblood);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.village-list .biz-links a:hover,
+.village-list .biz-links a:focus {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+.village-list .biz-meta {
+    color: var(--navy-faint);
+    font-style: italic;
 }
 
 .back-to-index {
