@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="../styles.css">
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23f3e9d2'/><text x='32' y='44' text-anchor='middle' font-family='Georgia, serif' font-size='38' font-weight='700' fill='%231a2342'>M</text></svg>">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V495MFWDXB"></script>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script defer src="https://www.googletagmanager.com/gtag/js?id=G-V495MFWDXB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -101,8 +102,8 @@
   <section class="feedback">
     <h3>Tell us what you saw</h3>
     <p class="feedback-sub">Two short questions. Your answers help us improve the tour.</p>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEHeQom7eJTnVvqqgClIUr0FNFFM8Rml0vRvXQKHoO4TUtyA/viewform?embedded=true"
-            title="Feedback form" loading="lazy"
+    <iframe data-src="https://docs.google.com/forms/d/e/1FAIpQLScEHeQom7eJTnVvqqgClIUr0FNFFM8Rml0vRvXQKHoO4TUtyA/viewform?embedded=true"
+            title="Feedback form"
             marginheight="0" marginwidth="0">Loading the form&hellip;</iframe>
   </section>
 
@@ -168,6 +169,27 @@
         localStorage.setItem('mhwalk_last_visit', new Date().toISOString());
       }
     } catch (e) {}
+    // Lazy-load Google Forms iframe via IntersectionObserver
+    var iframe = document.querySelector('.feedback iframe[data-src]');
+    if (iframe) {
+      var loaded = false;
+      var loadIframe = function() {
+        if (loaded) return;
+        loaded = true;
+        iframe.src = iframe.dataset.src;
+      };
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) { loadIframe(); obs.disconnect(); }
+          });
+        }, { rootMargin: '300px' });
+        obs.observe(iframe);
+      } else {
+        window.addEventListener('scroll', loadIframe, { once: true, passive: true });
+        setTimeout(loadIframe, 5000);
+      }
+    }
   })();
 </script>
 </body>
