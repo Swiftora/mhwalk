@@ -357,6 +357,88 @@ a:hover, a:focus { color: var(--oxblood-soft); }
 .prev-stop:hover { text-decoration: underline; }
 .prev-stop .arrow { margin-right: 4px; }
 
+/* Village link — softer companion to .next-stop */
+.village-link {
+    display: block;
+    text-decoration: none;
+    margin: 18px -4px 18px;
+    padding: 18px 22px;
+    background: var(--cream-deep);
+    color: var(--navy);
+    text-align: center;
+    border: 1px solid var(--navy);
+    border-radius: 0;
+    transition: background 0.15s ease;
+}
+.village-link:hover, .village-link:focus {
+    background: var(--cream-light);
+    color: var(--navy);
+}
+.village-link .label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--oxblood);
+}
+.village-link .destination {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.village-link .direction {
+    display: block;
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 4px;
+    color: var(--navy-faint);
+    font-weight: 500;
+}
+
+/* Village page — business listings */
+.village-section { margin: 26px 0; }
+.village-section .section-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--oxblood);
+    margin: 18px 0 16px;
+}
+.village-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.village-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cream-deep);
+}
+.village-list li:last-child { border-bottom: none; }
+.village-list .biz-name {
+    display: block;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--navy);
+}
+.village-list .biz-addr {
+    display: block;
+    font-size: 13px;
+    color: var(--navy-faint);
+    margin-top: 2px;
+    font-style: italic;
+}
+.village-list .biz-desc {
+    display: block;
+    font-size: 15px;
+    color: var(--navy);
+    margin-top: 6px;
+    line-height: 1.45;
+}
+
 .back-to-index {
     display: block;
     text-align: center;
