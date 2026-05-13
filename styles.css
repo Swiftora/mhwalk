@@ -469,6 +469,14 @@ a:hover, a:focus { color: var(--oxblood-soft); }
     font-style: italic;
 }
 
+.sources-note {
+    margin: 22px 0 8px;
+    font-size: 13px;
+    color: var(--navy-faint);
+    text-align: center;
+    line-height: 1.5;
+}
+
 .back-to-index {
     display: block;
     text-align: center;

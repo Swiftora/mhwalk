@@ -31,6 +31,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mhwalk.com/about/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mhwalk.com/village/</loc>
     <lastmod>2026-05-13</lastmod>
     <priority>0.6</priority>
