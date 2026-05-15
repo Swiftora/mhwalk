@@ -97,16 +97,11 @@ a:hover, a:focus { color: var(--oxblood-soft); }
 
 /* ---------- Tour header (every page) ---------- */
 .tour-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
     background: var(--cream);
     padding: 10px 0 12px;
     border-bottom: 2px solid var(--navy);
     margin-bottom: 8px;
     text-align: center;
-    position: relative; /* fallback */
-    position: sticky;
 }
 .tour-header::after {
     content: '';
