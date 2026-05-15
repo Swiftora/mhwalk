@@ -109,9 +109,10 @@
   <section class="feedback">
     <h3>Tell us what you saw</h3>
     <p class="feedback-sub">Two short questions. Your answers help us improve the tour.</p>
-    <iframe data-src="https://docs.google.com/forms/d/e/1FAIpQLScEHeQom7eJTnVvqqgClIUr0FNFFM8Rml0vRvXQKHoO4TUtyA/viewform?embedded=true"
+    <button type="button" class="feedback-toggle" aria-controls="feedback-frame">Open the feedback form</button>
+    <iframe id="feedback-frame" data-src="https://docs.google.com/forms/d/e/1FAIpQLScEHeQom7eJTnVvqqgClIUr0FNFFM8Rml0vRvXQKHoO4TUtyA/viewform?embedded=true"
             title="Feedback form"
-            marginheight="0" marginwidth="0">Loading the form&hellip;</iframe>
+            marginheight="0" marginwidth="0" hidden>Loading the form&hellip;</iframe>
   </section>
 
   <footer class="hths-footer">
@@ -176,26 +177,16 @@
         localStorage.setItem('mhwalk_last_visit', new Date().toISOString());
       }
     } catch (e) {}
-    // Lazy-load Google Forms iframe via IntersectionObserver
-    var iframe = document.querySelector('.feedback iframe[data-src]');
-    if (iframe) {
-      var loaded = false;
-      var loadIframe = function() {
-        if (loaded) return;
-        loaded = true;
-        iframe.src = iframe.dataset.src;
-      };
-      if ('IntersectionObserver' in window) {
-        var obs = new IntersectionObserver(function(entries) {
-          entries.forEach(function(e) {
-            if (e.isIntersecting) { loadIframe(); obs.disconnect(); }
-          });
-        }, { rootMargin: '300px' });
-        obs.observe(iframe);
-      } else {
-        window.addEventListener('scroll', loadIframe, { once: true, passive: true });
-        setTimeout(loadIframe, 5000);
-      }
+    // Feedback form reveal-on-click (prevents iframe scroll-trap on mobile)
+    var feedbackToggle = document.querySelector('.feedback-toggle');
+    var feedbackIframe = document.querySelector('.feedback iframe[data-src]');
+    if (feedbackToggle && feedbackIframe) {
+      feedbackToggle.addEventListener('click', function() {
+        if (!feedbackIframe.src) feedbackIframe.src = feedbackIframe.dataset.src;
+        feedbackIframe.hidden = false;
+        feedbackToggle.hidden = true;
+        send('feedback_form_opened', { from: location.pathname });
+      });
     }
   })();
 </script>
