@@ -1032,3 +1032,17 @@ footer.hths-footer .award {
 .feedback-toggle[hidden] {
   display: none !important;
 }
+
+/* HTHS logo placements */
+.hths-logo-footer {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 10px;
+}
+.hths-logo-header {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 12px;
+}
