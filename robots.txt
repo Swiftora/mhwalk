@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://mhwalk.com/sitemap.xml

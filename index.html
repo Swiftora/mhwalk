@@ -1,277 +1,241 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#43321F">
 <title>Mullica Hill Historic Walking Tour</title>
-<meta name="description" content="A self-guided walking tour of five historic stops in the Mullica Hill Historic District, presented by the Harrison Township Historical Society.">
-<meta name="theme-color" content="#1a2342">
+<meta name="description" content="A free self-guided walking tour of Mullica Hill, New Jersey: twenty-two stops along Main Street, three hundred years of stories, a free museum at Old Town Hall, and where to eat and shop. Presented by the">
+<link rel="canonical" href="https://mhwalk.com/"><meta property="og:type" content="website"><meta property="og:site_name" content="Mullica Hill Historic Walking Tour"><meta property="og:title" content="Mullica Hill Historic Walking Tour"><meta property="og:description" content="A free self-guided walking tour of Mullica Hill, New Jersey: twenty-two stops along Main Street, three hundred years of stories, a free museum at Old Town Hall, and where to eat and shop. Presented by the"><meta property="og:url" content="https://mhwalk.com/"><meta property="og:image" content="https://mhwalk.com/assets/share-home.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="South Main Street at High Street, Mullica Hill, about 1900"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="./assets/seal.jpg"><link rel="apple-touch-icon" href="./assets/seal.jpg"><link rel="preload" href="./assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(./assets/fonts/fraunces-latin-opsz-normal.woff2) format('woff2-variations'),url(./assets/fonts/fraunces-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Fraunces';font-style:italic;font-weight:100 900;font-display:swap;src:url(./assets/fonts/fraunces-latin-wght-italic.woff2) format('woff2-variations'),url(./assets/fonts/fraunces-latin-wght-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url(./assets/fonts/archivo-latin-wght-normal.woff2) format('woff2-variations'),url(./assets/fonts/archivo-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}body{font-optical-sizing:auto}
+:root{--parchment:#F7F0E1;--parchment-deep:#EFE3C8;--ink:#2A2118;--red:#C0272D;
+--red-deep:#9E1F24;--gold:#E9A93B;--gold-deep:#D4922A;--cocoa:#43321F;--mat:#FFFDF7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--parchment);color:var(--ink);
+  font-family:'Archivo',Arial,sans-serif;font-size:19px;line-height:1.65;
+  -webkit-text-size-adjust:100%;padding-bottom:88px}
+a{color:var(--red-deep);text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{color:var(--ink)}
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mullica Hill Historic Walking Tour">
-<meta property="og:description" content="A self-guided walk through five historic stops in Mullica Hill, New Jersey.">
-<meta property="og:url" content="https://mhwalk.com/">
-<meta property="og:image" content="https://mhwalk.com/images/cover.jpg">
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+header.site{background:var(--parchment);border-bottom:2px solid var(--ink)}
+header.site .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand img{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink)}
+.brand .bw{display:flex;flex-direction:column;gap:1px}
+.brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1;white-space:nowrap}
+.brand .bs{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
+nav.top{display:flex;gap:16px}
+nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap}
+nav.top a:hover{color:var(--red-deep)}
+.kicker{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red-deep);margin:16px 0 8px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(36px,8.6vw,52px);
+  line-height:1.08;margin:0 0 10px}
+.sub{color:var(--cocoa);font-size:16px;font-weight:600;margin-bottom:6px}
+.readmeta{color:var(--cocoa);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:22px}
+p{margin:0 0 1.15em}
+.lede{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:23px;line-height:1.45}
+figure.photo{margin:1.6em 0 2em;background:var(--mat);border:3px solid var(--ink);
+  box-shadow:8px 8px 0 var(--gold);padding:12px}
+figure.photo img{width:100%;height:auto;display:block}
+figure.photo figcaption{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.92rem;
+  color:var(--cocoa);text-align:center;padding-top:10px;line-height:1.5}
+figure.photo.missing img{display:none}
+figure.photo.missing::before{content:"Photograph from the Society's collections is being prepared for this page.";
+  display:block;padding:36px 20px;text-align:center;background:var(--parchment-deep);
+  color:var(--cocoa);font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:15px}
+.media{margin:1.6em 0 2em;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--gold-deep);background:#000}
+.media video{width:100%;display:block}
+.dyk{background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  padding:20px 22px;margin:2.2em 0}
+.dyk h2,.aru h2,.cta h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
+.dyk p{margin:0;font-size:17px}
+.aru{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
+.aru h2{margin-bottom:6px}
+.aru p{font-size:16px;color:var(--cocoa);margin:0}
+.cta{background:var(--parchment-deep);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  padding:18px 20px;margin:2em 0 0;font-size:16px}
+.cta p{margin:0 0 .5em}
+.cta p:last-child{margin:0}
+.pending{background:var(--parchment-deep);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  color:var(--ink);padding:16px 20px;font-size:15px;line-height:1.55;margin:22px 0}
+.pending strong{display:block;font-size:.72rem;font-weight:800;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red-deep);margin-bottom:6px}
+.nextbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--red-deep);
+  border-top:3px solid var(--ink);box-shadow:0 -4px 0 rgba(42,33,24,.25);
+  padding:0 16px calc(env(safe-area-inset-bottom,0px))}
+.nextbar a{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:680px;
+  margin:0 auto;min-height:64px;text-decoration:none;color:var(--parchment);font-weight:800;
+  text-transform:uppercase;letter-spacing:.04em;font-size:17px}
+.nextbar a:active{background:var(--red)}
+.nextbar .nl{font-size:11px;letter-spacing:.2em;color:var(--gold);display:block;margin-bottom:2px}
+.nextbar .ar{font-size:26px;line-height:1;background:var(--gold);color:var(--ink);border:2px solid var(--ink);
+  min-width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex:none}
+.prevlink{margin:1.6em 0 0;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.mapline{border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);
+  padding:14px 18px;margin:28px 0;font-size:16px}
+.mapline b{letter-spacing:.02em}
+.btn2{display:inline-block;background:var(--mat);color:var(--ink);font-weight:800;text-decoration:none;
+  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:12px 22px;font-size:16px;
+  text-transform:uppercase;letter-spacing:.05em;margin:6px 10px 6px 0}
+.btn2:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);color:var(--ink)}
+#map{height:62vh;min-height:380px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:var(--parchment-deep)}
+.stopdot{background:var(--ink);color:var(--parchment);border:2px solid var(--parchment);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:'Archivo',Arial,sans-serif;
+  font-weight:800;font-size:13px;box-shadow:0 0 0 2px var(--ink)}
+.stopdot.ext{background:var(--red-deep)}
+.stopdot.way{background:var(--gold);color:var(--ink)}
+.shopdot{background:var(--gold);border:2px solid var(--ink);border-radius:50%;box-shadow:1px 1px 0 var(--ink)}
+.leaflet-popup-content{font-family:'Archivo',Arial,sans-serif;font-size:14px}
+.leaflet-popup-content b{font-size:15px}
+.locbtn{background:var(--mat);border:2px solid var(--ink);padding:13px 14px;font-weight:800;cursor:pointer;
+  font-family:'Archivo',Arial,sans-serif;font-size:13px}
+#map{position:relative}
+#map .locbtn{position:absolute;top:86px;left:10px;z-index:5}
+.layerbox{position:absolute;top:10px;right:10px;z-index:5;background:var(--mat);border:2px solid var(--ink);padding:4px 12px;font-family:'Archivo',Arial,sans-serif;font-size:15px;font-weight:600}
+.layerbox label{display:block;padding:10px 2px;cursor:pointer}
+.layerbox input{width:19px;height:19px;vertical-align:-4px}
+.biz small a{display:inline-block;padding:6px 0}
+.medot{width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid var(--mat);box-shadow:0 0 0 2px var(--ink)}
+.maplibregl-popup-content{font-family:'Archivo',Arial,sans-serif;font-size:14px}
+.maplegend{font-size:14px;margin:14px 0 0;color:var(--cocoa)}
+.leaflet-container a{color:var(--red-deep)}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.cta h2,.cta a,.pending strong{color:var(--ink)}
+/* Two-cell fixed bar: previous left, next right, number plus direction, never a wrapping title */
+.nextbar a{min-height:64px}
+.nextbar .cells{display:flex;max-width:680px;margin:0 auto}
+.nextbar .cells a{flex:1;min-height:64px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:none;letter-spacing:0;font-size:14px;line-height:1.2;padding:6px 0}
+.nextbar .cells a b{font-weight:800}
+.nextbar .cells a.prev{flex:0 0 42%;justify-content:flex-start;color:var(--parchment);opacity:.92;border-right:2px solid rgba(247,240,225,.35);margin-right:12px}
+.nextbar .cells a.next{color:var(--parchment);justify-content:space-between}
+.nextbar .nl{color:var(--parchment);opacity:.9;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;display:block;margin-bottom:1px}
+.nextbar .cells .ar.l{background:transparent;color:var(--parchment);border-color:var(--parchment);min-width:32px;height:32px;font-size:20px}
+/* Front door */
+.pretitle{font-family:'Archivo',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);margin:0 0 6px}
+.beats{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:22px;line-height:1.3;margin:0 0 16px;color:var(--ink)}
+.band{margin:14px 0 20px;background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--gold);padding:6px}
+.band img{width:100%;height:auto;display:block}
+.band figcaption{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.9rem;color:var(--cocoa);padding:8px 6px 4px}
+.stats{display:flex;gap:10px;margin:18px 0 6px}
+.stats div{flex:1;border:3px solid var(--ink);background:var(--mat);box-shadow:4px 4px 0 var(--ink);padding:10px 8px;text-align:center}
+.stats b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:24px;line-height:1.1}
+.stats small{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);margin-top:4px}
+.stats span{display:block;font-size:13px;color:var(--cocoa);margin-top:2px}
+.plan{border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);padding:18px 20px;margin:22px 0}
+.plan h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
+.plan dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.plan dt{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--cocoa);padding-top:3px}
+.plan dd{margin:0}
+.stops .t .hook{display:block;font-weight:400;font-size:15px;color:var(--ink);margin-top:2px;line-height:1.35}
+.card{display:block;border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);padding:16px 18px;margin:18px 0;text-decoration:none;color:var(--ink)}
+.card b{display:block;font-family:'Archivo',Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);margin-bottom:4px}
+.card span{font-size:17px;font-weight:700}
+.card:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink)}
+.give{border:3px solid var(--ink);background:var(--parchment-deep);box-shadow:6px 6px 0 var(--gold);padding:20px 22px;margin:26px 0}
+.give h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.give p{margin:0 0 10px;font-size:17px}
+.give small{display:block;font-size:13px;color:var(--cocoa);margin-bottom:10px}
+.give .btn{font-size:14px;white-space:nowrap;padding:12px 18px}
+.flinks{margin:10px 0 0;font-size:14px}
+footer.site a{color:var(--parchment)}
+.dyk.small{margin-top:14px}
+.privacy h2{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:22px;margin:1.6em 0 .4em}
+footer.site{margin-top:3.4em;background:var(--cocoa);color:var(--parchment);border-top:3px solid var(--ink)}
+footer.site .wrap{padding:26px 20px;font-size:14px;line-height:1.8}
+.share{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
+.share h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.share p{font-size:16px;color:var(--cocoa);margin:0 0 10px}
+.share .row{display:flex;gap:10px;flex-wrap:wrap}
+.share a{display:inline-block;text-decoration:none;color:var(--ink);background:var(--mat);border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);padding:9px 14px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.share a:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.evstrip{background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 20px;margin:2em 0 0;font-size:16px}
+.evstrip h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.evstrip p{margin:0 0 .5em}
+.evstrip p:last-child{margin:0}
+@media print{
+  body{background:#fff;color:#000;font-size:12pt;line-height:1.45;padding-bottom:0}
+  header.site,.nextbar,.share,.prevlink,nav.top{display:none !important}
+  a{color:#000;text-decoration:none}
+  figure.photo,.dyk,.cta,.evstrip,.practical,.pending{box-shadow:none;border:1px solid #000;break-inside:avoid}
+  .stops .n{background:#fff;color:#000;border:1px solid #000}
+  .stops .n.ext{background:#fff;color:#000}
+  .stops li{break-inside:avoid}
+  h1{font-size:26pt}
+  .lede{font-size:14pt}
+  footer.site{background:#fff;color:#000;border-top:1px solid #000}
+}
+.branch{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
+.branch h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.branch p{margin:0 0 .5em;font-size:16px}
+.btn{display:inline-block;background:var(--gold);color:var(--ink);font-weight:800;text-decoration:none;
+  padding:14px 22px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font-size:.95rem;
+  letter-spacing:.04em;text-transform:uppercase;margin:6px 0 22px}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);color:var(--ink)}
+/* index + village */
+.routehead{margin:32px 0 4px;font-size:.76rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red-deep)}
+.routeblurb{color:var(--cocoa);font-size:15px;margin:0 0 12px}
+ol.stops,ul.stops{list-style:none;margin:0 0 8px;padding:0}
+.stops li{border-bottom:2px solid var(--ink)}
+.stops li:first-child{border-top:2px solid var(--ink)}
+.stops a{display:flex;gap:14px;align-items:center;padding:12px 4px;text-decoration:none;color:var(--ink)}
+.stops a:hover{background:var(--mat)}
+.stops .n{flex:0 0 34px;height:34px;display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;border-radius:50%;background:var(--gold);color:var(--ink);border:2px solid var(--ink)}
+.stops .n.wp{background:var(--mat)}
+.stops .n.ext{background:var(--red-deep);color:var(--parchment)}
+.stops .t{flex:1;font-weight:600}
+.stops .t small{display:block;color:var(--cocoa);font-size:14px;font-weight:400}
+.heldtag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+  background:var(--gold);border:2px solid var(--ink);padding:1px 8px;margin-left:8px;white-space:nowrap}
+.practical{background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+  padding:22px 24px;margin:30px 0;font-size:16px}
+.practical h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
+.practical p{margin:0 0 .6em}
+h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;margin:1.8em 0 .4em}
+.biz{border-bottom:2px solid var(--parchment-deep);padding:10px 0}
+.biz b{font-size:17px}
+.biz small{display:block;color:var(--cocoa);font-size:14px}
+@media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
+  nav.top{width:100%;justify-content:flex-start;gap:14px}nav.top a{font-size:14px}}
+</style>
+<!-- ANALYTICS (GoatCounter) DISABLED. To enable: create the site at goatcounter.com, replace MYCODE, uncomment.
+<script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+</head><body>
+<header class="site"><div class="wrap">
+<a class="brand" href="./index.html"><img src="./assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
+<nav class="top" aria-label="Site"><a href="./index.html">The Tour</a><a href="./map/index.html">Map</a><a href="./village/index.html">Eat &amp; Shop</a><a href="./about/index.html">About</a></nav>
+</div></header>
+<main class="wrap">
+<p class="kicker">Harrison Township Historical Society</p>
+<p class="pretitle">A Self-Guided Walking Tour</p>
+<h1>Mullica Hill Historic Walking Tour</h1>
+<p class="beats">Twenty-two stops. One mile of sidewalk. Three hundred years.</p>
+<figure class="band"><img src="assets/home-band.jpg" width="1600" height="670" alt="South Main Street at High Street, Mullica Hill, about 1900, looking north along the brick row" fetchpriority="high"><figcaption>South Main at High Street, about 1900. Stand on the same corner today and very little has moved.</figcaption></figure>
+<a class="btn" href="old-town-hall/index.html">Begin at Old Town Hall &#8594;</a>
+<a class="btn2" href="map/index.html">Open the Tour Map</a>
+<p class="lede">This walk runs through the Mullica Hill Historic District, the whole village listed on the National Register in 1991. Its stories reach back to a 1705 survey that set the Mullica name on the rise above Raccoon Creek, and run through a 1772 tavern built four years before the Declaration of Independence, a 1922 flight that carried local asparagus to Massachusetts from a field outside the village, and a March morning in 1964 when a tractor-trailer came through the wall of the feed store at the Old Mill.</p>
+<p>The walk begins at the Society&#39;s museum at Old Town Hall, 62 South Main Street, follows South Main Street in a loop of about a mile, and offers an optional half-mile leg up North Main to the town clock. Most stops have a yard sign; scan it, or follow the numbers here. New to the village? <a href="about/index.html">Read a brief history first.</a></p>
+<div class="stats"><div><b>22</b><small>Stops</small><span>13 on the loop, 5 on the extension, 4 waypoints</span></div><div><b>1 mi</b><small>Distance</small><span>the loop; half a mile more on the extension</span></div><div><b>1 hr</b><small>Time</small><span>the loop, at a reading pace</span></div></div>
+<div class="plan"><h2>Plan Your Visit</h2><dl>
+<dt>Start at</dt><dd>Old Town Hall, 62 South Main Street, Mullica Hill, NJ 08062 · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.731123,-75.224405">Get directions</a></dd>
+<dt>Museum</dt><dd>Open weekend afternoons in its spring and fall exhibit seasons, and by appointment; <a href="https://www.harrisonhistorical.com/">current dates and hours are on the Society&#39;s site</a>. Admission is free.</dd>
+<dt>Parking</dt><dd>Free street parking throughout the village.</dd>
+<dt>Restrooms</dt><dd>Inside the museum during open hours.</dd>
+<dt>Access</dt><dd>Paved sidewalks throughout the village.</dd>
+<dt>Cost</dt><dd>Free. <a href="https://www.harrisonhistorical.com/support">Donations to the Society</a> keep Old Town Hall standing.</dd>
+</dl></div>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23f3e9d2'/><text x='32' y='44' text-anchor='middle' font-family='Georgia, serif' font-size='38' font-weight='700' fill='%231a2342'>M</text></svg>">
-
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script defer src="https://www.googletagmanager.com/gtag/js?id=G-BRMJNKHDHE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-BRMJNKHDHE');
-</script>
-</head>
-<body>
-<main class="page">
-
-  <header class="tour-header">
-    <p class="kicker">Harrison Township Historical Society</p>
-  </header>
-
-  <div class="tour-title">
-    <span class="pre">A Self-Guided Walking Tour</span>
-    <h1>Mullica Hill Historic Walking Tour</h1>
-    <p class="post">Five buildings. One mile of sidewalk. Two hundred and fifty years.</p>
-  </div>
-
-  <div class="rule-ornament" aria-hidden="true">
-    <svg width="180" height="14" viewBox="0 0 180 14">
-      <line x1="0" y1="7" x2="70" y2="7" stroke="#1a2342" stroke-width="1"/>
-      <circle cx="83" cy="7" r="2.5" fill="#1a2342"/>
-      <circle cx="90" cy="3" r="2.5" fill="#1a2342"/>
-      <circle cx="97" cy="7" r="2.5" fill="#1a2342"/>
-      <line x1="110" y1="7" x2="180" y2="7" stroke="#1a2342" stroke-width="1"/>
-    </svg>
-  </div>
-
-  <section class="tour-intro">
-    <p class="lead">The five buildings on this walk stand inside the Mullica Hill Historic District, listed on the National Register in 1991. They span from a 1772 tavern built four years before the Declaration of Independence to a 1922 produce flight that lifted off from a farm field outside the historic district. The walk begins at the Harrison Township Historical Society's museum at Old Town Hall, 62 South Main Street, and runs along South Main and Woodstown Road. <a href="about/">New to the village? Read a brief history first &rsaquo;</a></p>
-    <p>Each stop has a yard sign with a QR code. Scan the code at the sign to read the story for that building. The tour follows a simple geographic flow: begin at the museum on the west side of Main, cross to the corner at the Friends Meeting House, walk north up Main to the Gaunt House and the Warehouse, then cross to the east side of Main at the Old Mill traffic light and walk south along the storefronts to finish at the Old Eagle Hotel just before the museum. The whole tour takes about an hour at a comfortable reading pace.</p>
-  </section>
-
-  <div class="tour-meta">
-    <div class="meta-item">
-      <span class="label">Stops</span>
-      <span class="value">5 sites</span>
-    </div>
-    <div class="meta-item">
-      <span class="label">Distance</span>
-      <span class="value">About 1 mile</span>
-    </div>
-    <div class="meta-item">
-      <span class="label">Time</span>
-      <span class="value">~ 1 hour</span>
-    </div>
-  </div>
-
-  <section class="plan-visit">
-    <p class="section-label">Plan Your Visit</p>
-    <dl class="plan-grid">
-      <div>
-        <dt>Start at</dt>
-        <dd>Old Town Hall Museum<br>62 South Main Street, Mullica Hill, NJ<br><a href="https://www.google.com/maps/dir/?api=1&destination=62+South+Main+Street+Mullica+Hill+NJ&travelmode=driving" target="_blank" rel="noopener">Get directions in Google Maps &rsaquo;</a></dd>
-      </div>
-      <div>
-        <dt>Museum hours</dt>
-        <dd>Saturdays and Sundays, 1:00 to 4:00 p.m.<br>Other times by appointment.</dd>
-      </div>
-      <div>
-        <dt>Parking</dt>
-        <dd>Free street parking on South Main and surrounding streets.</dd>
-      </div>
-      <div>
-        <dt>Restrooms</dt>
-        <dd>Available inside the museum during open hours.</dd>
-      </div>
-      <div>
-        <dt>Accessibility</dt>
-        <dd>Paved sidewalks throughout the village.</dd>
-      </div>
-      <div>
-        <dt>Cost</dt>
-        <dd>Free. Donations to the Society are welcomed.</dd>
-      </div>
-    </dl>
-  </section>
-
-  <p class="section-label">The Stops</p>
-
-  <ol class="stop-list">
-    <li>
-      <a href="01/">
-        <span class="num">1</span>
-        <span>
-          <span class="name">Old Town Hall</span>
-          <span class="year">1871</span>
-          <span class="teaser">Built by stockholders at five dollars a share. Site of the 1926 Stark Brothers ceremony that introduced a new American apple. Home of the Society's museum.</span>
-          <span class="address">62 South Main Street</span>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="02/">
-        <span class="num">2</span>
-        <span>
-          <span class="name">Friends Meeting House</span>
-          <span class="year">1808</span>
-          <span class="teaser">A Quaker meeting that has gathered on this corner since 1797, and a great wind in 1808 that tested whether they would build again.</span>
-          <span class="address">Corner of South Main &amp; Woodstown Road</span>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="03/">
-        <span class="num">3</span>
-        <span>
-          <span class="name">The Gaunt House</span>
-          <span class="year">c. 1885</span>
-          <span class="teaser">A state senator who answered a fire call in 1916 and later died at home of his injuries, and the daughter-in-law whose sewing factory kept the house going for a century after.</span>
-          <span class="address">14 South Main Street</span>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="04/">
-        <span class="num">4</span>
-        <span>
-          <span class="name">The Warehouse</span>
-          <span class="year">c. 1890</span>
-          <span class="teaser">A million bushels of sweet potatoes, a 1922 airplane carrying asparagus to Boston, and the rail line that connected this corner to the eastern seaboard.</span>
-          <span class="address">2 South Main Street</span>
-        </span>
-      </a>
-    </li>
-    <li>
-      <a href="05/">
-        <span class="num">5</span>
-        <span>
-          <span class="name">Old Eagle Hotel</span>
-          <span class="year">Est. 1772</span>
-          <span class="teaser">A tavern four years older than the United States, and the room where citizens met in 1844 to form Old Harrison Township.</span>
-          <span class="address">51 South Main Street</span>
-        </span>
-      </a>
-    </li>
-  </ol>
-
-  <a href="01/" class="begin-cta">
-    <span class="label">Begin the Tour</span>
-    <span class="destination">Stop 1 &middot; Old Town Hall &rsaquo;</span>
-  </a>
-
-  <a href="village/" class="village-link">
-    <span class="label">Make a Day of It</span>
-    <span class="destination">Eat &amp; Shop on Main Street &rsaquo;</span>
-    <span class="direction">Restaurants, antiques, bakeries, and shops along the tour route</span>
-  </a>
-
-  <div class="break" aria-hidden="true">⁂</div>
-
-  <div class="page-utilities">
-    <a href="#" class="util-link" id="share-link">Share this tour</a>
-  </div>
-
-  <footer class="hths-footer">
-    <p class="preamble">presented by the</p>
-    <p class="society"><a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a></p>
-    <p class="address">Old Town Hall Museum &nbsp;&middot;&nbsp; 62 South Main Street, Mullica Hill, NJ</p>
-    <p class="links">
-      <a href="https://www.harrisonhistorical.com/">Society</a> &middot;
-      <a href="https://www.facebook.com/harrisonhistorical/">Facebook</a> &middot;
-      <a href="https://www.harrisonhistorical.com/membership-form">Membership</a> &middot;
-      <a href="privacy/">Privacy</a>
-    </p>
-    <p class="award">Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.</p>
-  </footer>
-
-</main>
-<script>
-  (function() {
-    function send(event, params) {
-      if (typeof gtag === 'function') gtag('event', event, params || {});
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var ref = document.referrer || '';
-      var method = 'qr_or_direct';
-      if (ref.indexOf('mhwalk.com') > -1) method = 'in_site_nav';
-      else if (ref) method = 'external_referrer';
-      var path = location.pathname.replace(/\//g, '') || 'index';
-      send('stop_entry', { entry_method: method, stop_path: path, referrer: ref || '(none)' });
-    });
-    document.querySelectorAll('a.next-stop').forEach(function(a) {
-      a.addEventListener('click', function() { send('nav_next_stop', { from: location.pathname }); });
-    });
-    document.querySelectorAll('a.prev-stop').forEach(function(a) {
-      a.addEventListener('click', function() { send('nav_prev_stop', { from: location.pathname }); });
-    });
-    document.querySelectorAll('.all-stops a').forEach(function(a) {
-      a.addEventListener('click', function() { send('nav_all_stops_jump', { from: location.pathname, to: a.getAttribute('href') }); });
-    });
-    document.querySelectorAll('.tour-header a').forEach(function(a) {
-      a.addEventListener('click', function() { send('nav_home', { from: location.pathname }); });
-    });
-    // Photo lightbox
-    var overlay = document.createElement('div');
-    overlay.className = 'lightbox-overlay';
-    overlay.innerHTML = '<img alt=""><p class="caption"></p>';
-    document.body.appendChild(overlay);
-    document.querySelectorAll('.photo-strip img, .hero-image img').forEach(function(img) {
-      img.addEventListener('click', function() {
-        overlay.querySelector('img').src = img.src;
-        var cap = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : null;
-        overlay.querySelector('.caption').textContent = cap ? cap.textContent : '';
-        overlay.classList.add('open');
-        if (typeof gtag === 'function') gtag('event', 'photo_zoom', { src: img.src });
-      });
-    });
-    overlay.addEventListener('click', function() { overlay.classList.remove('open'); });
-    // Track last-visited stop in localStorage
-    try {
-      var path = location.pathname.replace(/\//g, '');
-      if (/^0[1-5]$/.test(path)) {
-        localStorage.setItem('mhwalk_last_stop', path);
-        localStorage.setItem('mhwalk_last_visit', new Date().toISOString());
-      }
-    } catch (e) {}
-    // Share link
-    document.getElementById('share-link').addEventListener('click', function(e) {
-      e.preventDefault();
-      var data = {
-        title: 'Mullica Hill Historic Walking Tour',
-        text: 'A self-guided walk through five historic stops in Mullica Hill, NJ.',
-        url: 'https://mhwalk.com/'
-      };
-      if (navigator.share) {
-        navigator.share(data).catch(function() {});
-      } else {
-        window.location.href = 'mailto:?subject=' + encodeURIComponent(data.title) + '&body=' + encodeURIComponent(data.text + '\n\n' + data.url);
-      }
-      if (typeof gtag === 'function') gtag('event', 'share_tour', { method: navigator.share ? 'native' : 'mailto' });
-    });
-  })();
-</script>
-<script>
-  (function() {
-    try {
-      var last = localStorage.getItem('mhwalk_last_stop');
-      var when = localStorage.getItem('mhwalk_last_visit');
-      if (last && when) {
-        var hoursAgo = (Date.now() - new Date(when).getTime()) / 36e5;
-        if (hoursAgo < 24) {
-          var resume = document.createElement('a');
-          resume.href = '/' + last + '/';
-          resume.className = 'resume-cta';
-          resume.innerHTML = '<span class="label">Resume Where You Left Off</span><span class="destination">Stop ' + parseInt(last) + ' &rsaquo;</span>';
-          var beginCta = document.querySelector('.begin-cta');
-          if (beginCta) beginCta.parentNode.insertBefore(resume, beginCta);
-        }
-      }
-    } catch (e) {}
-  })();
-</script>
-</body>
-</html>
+<p class="routehead">The Walk · In Order, Museum to Museum</p>
+<p class="routeblurb">About one mile on the loop, museum to museum, in the order below. Numbered stops are the full stories; gold letters are shorter reads on the way. The red numbers are the optional North Main leg, roughly half a mile more: it begins over the bridge after the Old Mill and rejoins the loop at the Foundry. Short on time? Skip the red numbers and cross at the Old Mill traffic light.</p>
+<ol class="stops">
+<li><a href="old-town-hall/index.html"><span class="n ">1</span><span class="t">Old Town Hall<span class="hook">Built on five-dollar shares, moved on rollers in 1920, home of the museum.</span><small>1871 · 62 South Main Street</small></span></a></li><li><a href="union-academy/index.html"><span class="n wp">A</span><span class="t">The School That Moved<span class="hook">Six schoolhouses on one lot since about 1720. One is now a house.</span><small>24 and 26 Woodstown Road</small></span></a></li><li><a href="friends-meeting-house/index.html"><span class="n ">2</span><span class="t">Friends Meeting House<span class="hook">The 1808 gable fell in a great wind. The meeting rebuilt and never left.</span><small>1808 · South Main &amp; Woodstown Road</small></span></a></li><li><a href="american-store/index.html"><span class="n wp">B</span><span class="t">The Letters in the Iron<span class="hook">Four iron letters under a shop window, left by the chain that became Acme.</span><small>c. 1925 · 54 South Main Street</small></span></a></li><li><a href="brick-row/index.html"><span class="n ">3</span><span class="t">The Brick Row<span class="hook">Already standing in the town's earliest picture, 1844. Almost nothing has moved since.</span><small>1771 · 42, 44 and 46 South Main Street</small></span></a></li><li><a href="wolf-funeral-home/index.html"><span class="n ">4</span><span class="t">Wolf Funeral Home<span class="hook">In 1889 he advertised a Patent Corpse Preserver. Then the dead came to him.</span><small>c. 1810 · 30 South Main Street</small></span></a></li><li><a href="iredell-house/index.html"><span class="n ">5</span><span class="t">The Harness Maker's Post Office<span class="hook">For thirteen years the whole post office fit inside a harness maker's house.</span><small>c. 1840 · 26 South Main Street</small></span></a></li><li><a href="first-baptist/index.html"><span class="n ">6</span><span class="t">First Baptist Church<span class="hook">Eighteen founders, the county's first Baptist church, and Union soldiers at rest behind it.</span><small>1845 · 18 South Main Street</small></span></a></li><li><a href="gaunt-house/index.html"><span class="n ">7</span><span class="t">The Gaunt House<span class="hook">A senator who answered the fire bell, and the sewing factory in his attic.</span><small>c. 1885 · 14 South Main Street</small></span></a></li><li><a href="warehouse/index.html"><span class="n ">8</span><span class="t">The Warehouse<span class="hook">Nearly a million bushels of sweet potatoes, and asparagus flown to Massachusetts in 1922.</span><small>c. 1890 · 2 South Main Street</small></span></a></li><li><a href="old-mill/index.html"><span class="n ">9</span><span class="t">The Old Mill<span class="hook">In 1964 a tractor-trailer came through the wall. The feed counter never closed.</span><small>1880s · 1 South Main Street</small></span></a></li><li><a href="the-bridge/index.html"><span class="n wp">C</span><span class="t">The Bridge Under the Bridge<span class="hook">Under this road lie the piers of the prettiest bridge the village ever had.</span><small>Raccoon Creek crossing</small></span></a></li><li><a href="mullica-house/index.html"><span class="n ext">N1</span><span class="t">Mullica House<span class="hook">Named for a family whose world vanished, except for this one little house.</span><small>Early 1700s · 20 North Main Street</small></span></a></li><li><a href="farmers-bank/index.html"><span class="n ext">N2</span><span class="t">Old Farmers National Bank<span class="hook">Four young men, everyone tied up, and 8,370 Depression dollars gone in 1932.</span><small>1903 · 28 North Main Street</small></span></a></li><li><a href="union-store/index.html"><span class="n ext">N3</span><span class="t">The Union Store<span class="hook">Ever wondered why Mullica Hill is an antiques town? Start with this building.</span><small>1866 · 46 North Main Street</small></span></a></li><li><a href="st-stephens/index.html"><span class="n ext">N4</span><span class="t">St. Stephen's Episcopal Church<span class="hook">The town clock since 1880, and the congregation that brought its dead along.</span><small>1853 · 51 North Main Street</small></span></a></li><li><a href="ware-law-office/index.html"><span class="n ext">N5</span><span class="t">The Ware Law Office<span class="hook">The town's first lawyer, a chair-maker's son, and the tiny office behind his house.</span><small>1850 · 53 North Main Street</small></span></a></li><li><a href="hoffman-foundry/index.html"><span class="n ">10</span><span class="t">The Foundry That Turned Around<span class="hook">The foundry that turned to face another street. Walk around back to find it.</span><small>1857 · South Main &amp; East Church Streets</small></span></a></li><li><a href="trinity-church/index.html"><span class="n ">11</span><span class="t">Trinity Methodist Church<span class="hook">Two churches in twenty-one years, and a parsonage from the town's first car dealer.</span><small>1848 · South Main Street</small></span></a></li><li><a href="stratton-house/index.html"><span class="n ">12</span><span class="t">The Stratton House<span class="hook">He kept the bullet that took his leg, and showed it from this porch.</span><small>1848 &middot; 39 South Main Street</small></span></a></li><li><a href="eagle-hotel/index.html"><span class="n ">13</span><span class="t">Old Eagle Hotel<span class="hook">A tavern four years older than the United States, where the township was born.</span><small>Est. 1772 · 51 South Main Street</small></span></a></li><li><a href="spicer-folwell/index.html"><span class="n wp">D</span><span class="t">Spicer-Folwell Homestead<span class="hook">This side of the creek was Spicerville once, and this was Spicer's house.</span><small>Mid-1700s · 76 South Main Street</small></span></a></li>
+</ol>
+<a class="card" href="./village/index.html"><b>Make a Day of It</b><span>Eat &amp; Shop on Main Street &#8594;</span></a>
+</main><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="./index.html">Tour Home</a> · <a href="./privacy/index.html">Privacy</a></p></div></footer></body></html>
