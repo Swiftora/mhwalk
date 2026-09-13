@@ -205,6 +205,22 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 .biz small{display:block;color:var(--cocoa);font-size:14px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
   nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
+
+/* Desktop treatment (owner-approved variant A, 2026-09-13): the reading column stays 680,
+   the page mounts as a sheet on a darker parchment ground, the header runs one line,
+   photographs and the map break out wider than the text, and the walking-order list
+   flows into two columns (CSS multicol, so any future stop count rebalances itself). */
+@media(min-width:1000px){
+  body{background:#E7DCC3}
+  header.site .wrap{max-width:1080px;flex-wrap:nowrap;row-gap:0}
+  nav.top{width:auto;justify-content:flex-end;flex-wrap:nowrap}
+  main.wrap{max-width:min(1000px,calc(100vw - 56px));padding:2px 160px 46px;background:var(--parchment);
+    border-left:1px solid rgba(42,33,24,.22);border-right:1px solid rgba(42,33,24,.22)}
+  main.wrap figure.band,main.wrap figure.photo,main.wrap #map{margin-left:-92px;margin-right:-92px}
+  ol.stops{columns:2;column-gap:36px}
+  ol.stops li{break-inside:avoid}
+  footer.site{margin-top:0}
+}
 </style>
 <!-- ANALYTICS (GoatCounter) DISABLED. To enable: create the site at goatcounter.com, replace MYCODE, uncomment.
 <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
