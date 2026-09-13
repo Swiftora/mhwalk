@@ -18,15 +18,17 @@ a:hover{color:var(--ink)}
 
 .wrap{max-width:680px;margin:0 auto;padding:0 20px}
 header.site{background:var(--parchment);border-bottom:2px solid var(--ink)}
-header.site .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px}
+header.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px;row-gap:8px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand img{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink)}
 .brand .bw{display:flex;flex-direction:column;gap:1px}
 .brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1;white-space:nowrap}
 .brand .bs{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
-nav.top{display:flex;gap:16px}
-nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap}
-nav.top a:hover{color:var(--red-deep)}
+nav.top{display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center}
+nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap;
+  background:var(--mat);border:2px solid var(--ink);padding:9px 16px;box-shadow:2px 2px 0 var(--ink)}
+nav.top a:hover{color:var(--red-deep);border-color:var(--red-deep)}
+nav.top a.on{background:var(--ink);color:var(--parchment);box-shadow:none}
 .kicker{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--red-deep);margin:16px 0 8px}
 h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(36px,8.6vw,52px);
@@ -202,7 +204,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 .biz b{font-size:17px}
 .biz small{display:block;color:var(--cocoa);font-size:14px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
-  nav.top{width:100%;justify-content:flex-start;gap:14px}nav.top a{font-size:14px}}
+  nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
 </style>
 <!-- ANALYTICS (GoatCounter) DISABLED. To enable: create the site at goatcounter.com, replace MYCODE, uncomment.
 <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -210,7 +212,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 </head><body>
 <header class="site"><div class="wrap">
 <a class="brand" href="./index.html"><img src="./assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
-<nav class="top" aria-label="Site"><a href="./index.html">The Tour</a><a href="./map/index.html">Map</a><a href="./village/index.html">Eat &amp; Shop</a><a href="./about/index.html">About</a></nav>
+<nav class="top" aria-label="Site"><a class="on" aria-current="page" href="./index.html">The Tour</a><a href="./map/index.html">Map</a><a href="./village/index.html">Eat &amp; Shop</a><a href="./about/index.html">About</a></nav>
 </div></header>
 <main class="wrap">
 <p class="kicker">Harrison Township Historical Society</p>

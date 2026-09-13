@@ -18,15 +18,17 @@ a:hover{color:var(--ink)}
 
 .wrap{max-width:680px;margin:0 auto;padding:0 20px}
 header.site{background:var(--parchment);border-bottom:2px solid var(--ink)}
-header.site .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px}
+header.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px;row-gap:8px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand img{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink)}
 .brand .bw{display:flex;flex-direction:column;gap:1px}
 .brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1;white-space:nowrap}
 .brand .bs{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
-nav.top{display:flex;gap:16px}
-nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap}
-nav.top a:hover{color:var(--red-deep)}
+nav.top{display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center}
+nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap;
+  background:var(--mat);border:2px solid var(--ink);padding:9px 16px;box-shadow:2px 2px 0 var(--ink)}
+nav.top a:hover{color:var(--red-deep);border-color:var(--red-deep)}
+nav.top a.on{background:var(--ink);color:var(--parchment);box-shadow:none}
 .kicker{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--red-deep);margin:16px 0 8px}
 h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(36px,8.6vw,52px);
@@ -202,7 +204,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 .biz b{font-size:17px}
 .biz small{display:block;color:var(--cocoa);font-size:14px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
-  nav.top{width:100%;justify-content:flex-start;gap:14px}nav.top a{font-size:14px}}
+  nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
 </style>
 <!-- ANALYTICS (GoatCounter) DISABLED. To enable: create the site at goatcounter.com, replace MYCODE, uncomment.
 <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -210,6 +212,6 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 </head><body>
 <header class="site"><div class="wrap">
 <a class="brand" href="../index.html"><img src="../assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
-<nav class="top" aria-label="Site"><a href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
+<nav class="top" aria-label="Site"><a class="on" aria-current="page" href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
 </div></header>
 <main class="wrap"><p class="kicker">Privacy</p><h1>Privacy</h1><p class="readmeta">Plain language · Updated September 2026</p><div class="privacy"><p class="lede">This site is a set of plain pages. It has no accounts, no cookies, no forms, and no advertising, and it does not track you from page to page.</p><h2>What we collect</h2><p>Nothing directly. The site is hosted on GitHub Pages, which, like every web host, keeps standard server logs (your IP address, the page requested, the time, and your browser type) for security and operations under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub&#39;s privacy statement</a>. The Society does not receive or store those logs.</p><h2>Fonts and images</h2><p>The typefaces and every photograph are served from this site itself. No font service or image host sees your visit.</p><h2>The map page</h2><p>The tour map draws its street tiles from OpenStreetMap, so when you open the map page your browser requests map images from tile.openstreetmap.org, which sees your IP address and the tiles you view, under the <a href="https://osmfoundation.org/wiki/Privacy_Policy" rel="noopener">OpenStreetMap Foundation privacy policy</a>. The Where am I? button asks your phone for its location only when you tap it; the position is used on your screen and is never sent to us. Directions links open Google Maps, whose own policies then apply.</p><h2>Sharing</h2><p>The share buttons open Facebook or your phone&#39;s own share sheet only when you tap them. No Facebook pixel or other tracker is loaded on any page.</p><h2>Analytics</h2><p>None at present. If the Society adds a visitor counter, it will be a cookie-free one that records only page views, and this page will say so.</p><h2>Contact</h2><p>Questions about this site go to the Harrison Township Historical Society at <a href="https://www.harrisonhistorical.com/contact">harrisonhistorical.com/contact</a>.</p></div></main><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>

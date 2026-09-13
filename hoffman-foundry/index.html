@@ -18,15 +18,17 @@ a:hover{color:var(--ink)}
 
 .wrap{max-width:680px;margin:0 auto;padding:0 20px}
 header.site{background:var(--parchment);border-bottom:2px solid var(--ink)}
-header.site .wrap{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px}
+header.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px;row-gap:8px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand img{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink)}
 .brand .bw{display:flex;flex-direction:column;gap:1px}
 .brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1;white-space:nowrap}
 .brand .bs{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
-nav.top{display:flex;gap:16px}
-nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap}
-nav.top a:hover{color:var(--red-deep)}
+nav.top{display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center}
+nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap;
+  background:var(--mat);border:2px solid var(--ink);padding:9px 16px;box-shadow:2px 2px 0 var(--ink)}
+nav.top a:hover{color:var(--red-deep);border-color:var(--red-deep)}
+nav.top a.on{background:var(--ink);color:var(--parchment);box-shadow:none}
 .kicker{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--red-deep);margin:16px 0 8px}
 h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(36px,8.6vw,52px);
@@ -202,15 +204,15 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 .biz b{font-size:17px}
 .biz small{display:block;color:var(--cocoa);font-size:14px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
-  nav.top{width:100%;justify-content:flex-start;gap:14px}nav.top a{font-size:14px}}
+  nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
 </style>
 <!-- ANALYTICS (GoatCounter) DISABLED. To enable: create the site at goatcounter.com, replace MYCODE, uncomment.
 <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 -->
-</head><body>
+<style>#lb{position:fixed;inset:0;background:rgba(26,20,14,.95);z-index:60;display:none;flex-direction:column}#lb.open{display:flex}#lb .lbwrap{flex:1;overflow:hidden;touch-action:none;display:flex;align-items:center;justify-content:center}#lb img{max-width:96vw;max-height:82vh;transform-origin:0 0;user-select:none;-webkit-user-drag:none}#lb .lbcap{color:var(--parchment);font-family:'Archivo',Arial,sans-serif;font-size:14px;line-height:1.45;padding:10px 18px 16px;text-align:center}#lb .lbx{position:absolute;top:12px;right:12px;width:48px;height:48px;background:var(--mat);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);font:800 26px/1 'Archivo',Arial,sans-serif;cursor:pointer;z-index:61}figure.photo img{cursor:zoom-in}figure.photo.missing img{cursor:default}</style></head><body>
 <header class="site"><div class="wrap">
 <a class="brand" href="../index.html"><img src="../assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
-<nav class="top" aria-label="Site"><a href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
+<nav class="top" aria-label="Site"><a class="on" aria-current="page" href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
 </div></header>
 <main class="wrap"><p class="kicker">Mullica Hill Historic Walking Tour</p><h1>The Foundry That Turned Around</h1><p class="sub">1857 · South Main &amp; East Church Streets</p><p class="readmeta">Stop 10 of 13 · Core Loop · Old Town Hall Museum 5 min · <a href="../map/index.html#hoffman-foundry">Map</a></p><figure class="photo"><img src="../assets/hoffman-foundry.jpg" alt="The Hoffman shop building, its signboard advertising wheelwrighting and blacksmithing." width="1200" height="852" fetchpriority="high" onerror="this.parentNode.classList.add('missing')"><figcaption>The Hoffman shop building, its signboard advertising wheelwrighting and blacksmithing.</figcaption></figure>
 <p class="lede">The building this story is about is still on this corner. You just have to walk around the back to find its face.</p>
@@ -218,4 +220,47 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <p>By 1882 the county history's census of village trades placed the firm's own wheelwrighting and blacksmithing "in the centre of town", one entry in a list of a dozen-odd going concerns serving about four hundred people. Parish tradition at St. Stephen's credits the village foundry with the cast panels that now form its altar rail: iron poured on this corner, standing in the chancel up North Main to this day.</p>
 <p>Later, the building did something few buildings ever do. Rather than come down, it went around: picked up, carried to the back of its lot, and rotated, so that the face which once greeted Main Street now greets Church Street, where it stands today. Buildings in Mullica Hill do not get demolished easily. They get repositioned.</p>
 <p>This intersection has one more story under it. The frame church the Episcopalians raised on the north corner in 1813 was the township's second church. When their stone church went up on North Main in 1853, the old building passed out of holy use and ran down through the years, private school, then piggery, then demolition. The congregation's remarkable story is told at Stop N4 on the North Main extension.</p>
-<div class="mapline"><b><a href="../map/index.html#hoffman-foundry">Open the tour map</a></b> to see where you are, get directions, and find what is open nearby.</div><div class="share"><h2>Send This Stop to Someone</h2><p>Know someone who grew up here, or someone who should visit? Two taps.</p><div class="row"><a href="https://www.facebook.com/sharer/sharer.php" rel="noopener" onclick="this.href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent((location.origin+location.pathname).replace(/index\.html$/,''))">Share on Facebook</a><a href="#" data-t="The Foundry That Turned Around on the Mullica Hill Historic Walking Tour" onclick="var u=(location.origin+location.pathname).replace(/index\.html$/,'');if(navigator.share){navigator.share({title:this.dataset.t,url:u});}else{if(navigator.clipboard){navigator.clipboard.writeText(u);}this.textContent='Link copied';}return false;">Share this page</a><a href="https://www.harrisonhistorical.com/contact">Tell the Society a story</a></div></div></main><div class="nextbar"><div class="cells"><a class="prev" href="../ware-law-office/index.html"><span class="ar l">&#8592;</span><span><span class="nl">Previous</span>N5 The Ware Law Office</span></a><a class="next" href="../trinity-church/index.html"><span><span class="nl">Next stop &middot; 2 min</span>Stop 11 Trinity Church</span><span class="ar">&#8594;</span></a></div></div><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>
+<div class="mapline"><b><a href="../map/index.html#hoffman-foundry">Open the tour map</a></b> to see where you are, get directions, and find what is open nearby.</div><div class="share"><h2>Send This Stop to Someone</h2><p>Know someone who grew up here, or someone who should visit? Two taps.</p><div class="row"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmhwalk.com%2Fhoffman-foundry%2F" rel="noopener" target="_blank">Share on Facebook</a><a href="https://mhwalk.com/hoffman-foundry/" data-t="The Foundry That Turned Around on the Mullica Hill Historic Walking Tour" data-u="https://mhwalk.com/hoffman-foundry/" onclick="var u=this.dataset.u;if(navigator.share){navigator.share({title:this.dataset.t,url:u});}else{if(navigator.clipboard){navigator.clipboard.writeText(u);}this.textContent='Link copied';}return false;">Share this page</a><a href="mailto:hthsmhnj@gmail.com?subject=A%20story%20for%20the%20walking%20tour%3A%20The%20Foundry%20That%20Turned%20Around">Email the Society a story</a></div></div></main><div class="nextbar"><div class="cells"><a class="prev" href="../ware-law-office/index.html"><span class="ar l">&#8592;</span><span><span class="nl">Previous</span>N5 The Ware Law Office</span></a><a class="next" href="../trinity-church/index.html"><span><span class="nl">Next stop &middot; 2 min</span>Stop 11 Trinity Church</span><span class="ar">&#8594;</span></a></div></div><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbcap"></div></div><script>
+(function(){
+ var lb=document.getElementById('lb'); if(!lb) return;
+ var im=lb.querySelector('img'), cap=lb.querySelector('.lbcap'), xbtn=lb.querySelector('.lbx');
+ var wrap=lb.querySelector('.lbwrap');
+ var sc=1, tx=0, ty=0, open=false;
+ function apply(){ im.style.transform='translate('+tx+'px,'+ty+'px) scale('+sc+')'; }
+ function reset(){ sc=1; tx=0; ty=0; apply(); }
+ function show(src, text){ im.src=src; cap.textContent=text||''; reset();
+  lb.classList.add('open'); document.body.style.overflow='hidden'; open=true;
+  try{ history.pushState({lb:1}, ''); }catch(e){} }
+ function hide(){ lb.classList.remove('open'); document.body.style.overflow=''; open=false; im.src=''; }
+ function closeUI(){ if(open){ if(history.state && history.state.lb){ history.back(); } else { hide(); } } }
+ window.addEventListener('popstate', function(){ if(open) hide(); });
+ document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeUI(); });
+ xbtn.addEventListener('click', closeUI);
+ lb.addEventListener('click', function(e){ if(e.target===lb || e.target===wrap || e.target===cap) closeUI(); });
+ document.querySelectorAll('figure.photo img').forEach(function(t){
+  t.addEventListener('click', function(){
+   if(!t.naturalWidth) return;
+   var f=t.closest('figure'); var c=f && f.querySelector('figcaption');
+   show(t.currentSrc || t.src, c ? c.textContent : (t.alt||''));
+  });
+ });
+ var pts=new Map(), startDist=0, startSc=1, panX=0, panY=0, startTx=0, startTy=0, lastTap=0;
+ function dist(){ var a=[]; pts.forEach(function(v){a.push(v);});
+  return Math.hypot(a[0].x-a[1].x, a[0].y-a[1].y); }
+ im.addEventListener('pointerdown', function(e){ e.preventDefault();
+  pts.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if(pts.size===2){ startDist=dist(); startSc=sc; }
+  else if(pts.size===1){ panX=e.clientX; panY=e.clientY; startTx=tx; startTy=ty; }
+  im.setPointerCapture(e.pointerId); });
+ im.addEventListener('pointermove', function(e){ if(!pts.has(e.pointerId)) return;
+  pts.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if(pts.size===2 && startDist>0){ sc=Math.min(4, Math.max(1, startSc*dist()/startDist)); if(sc===1){tx=0;ty=0;} apply(); }
+  else if(pts.size===1 && sc>1){ tx=startTx+(e.clientX-panX); ty=startTy+(e.clientY-panY); apply(); } });
+ function lift(e){ pts.delete(e.pointerId); startDist=0; }
+ im.addEventListener('pointerup', function(e){ lift(e);
+  var now=Date.now();
+  if(now-lastTap<300){ if(sc>1){ reset(); } else { sc=2.5; tx=(wrap.clientWidth/2-e.clientX)*1.5; ty=(wrap.clientHeight/2-e.clientY)*1.5; apply(); } lastTap=0; }
+  else { lastTap=now; } });
+ im.addEventListener('pointercancel', lift);
+ im.addEventListener('dblclick', function(e){ e.preventDefault(); });
+})();</script><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>
