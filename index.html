@@ -13,17 +13,19 @@
 body{margin:0;background:var(--parchment);color:var(--ink);
   font-family:'Archivo',Arial,sans-serif;font-size:19px;line-height:1.65;
   -webkit-text-size-adjust:100%;padding-bottom:88px}
+/* Q22: the 88px clearance exists for the fixed bar; pages without one drop it. */
+body:not(:has(.nextbar)){padding-bottom:0}
 a{color:var(--red-deep);text-decoration-thickness:2px;text-underline-offset:3px}
 a:hover{color:var(--ink)}
 
 .wrap{max-width:680px;margin:0 auto;padding:0 20px}
 header.site{background:var(--parchment);border-bottom:2px solid var(--ink)}
 header.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;gap:12px;row-gap:8px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:4px 0;min-height:44px}
 .brand img{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink)}
 .brand .bw{display:flex;flex-direction:column;gap:1px}
 .brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1;white-space:nowrap}
-.brand .bs{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
+.brand .bs{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
 nav.top{display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center}
 nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap;
   background:var(--mat);border:2px solid var(--ink);padding:9px 16px;box-shadow:2px 2px 0 var(--ink)}
@@ -36,12 +38,16 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(36px,8.6
 .sub{color:var(--cocoa);font-size:16px;font-weight:600;margin-bottom:6px}
 .readmeta{color:var(--cocoa);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:22px}
+.readmeta a{display:inline-block;padding:14px 2px;margin:-14px 0}
 p{margin:0 0 1.15em}
 .lede{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:23px;line-height:1.45}
 figure.photo{margin:1.6em 0 2em;background:var(--mat);border:3px solid var(--ink);
-  box-shadow:8px 8px 0 var(--gold);padding:12px}
+  box-shadow:8px 8px 0 var(--gold);padding:12px;position:relative}
+figure.photo:not(.missing)::after{content:"↗";position:absolute;top:20px;right:20px;width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;background:var(--mat);border:2px solid var(--ink);
+  font-size:18px;line-height:1;pointer-events:none;opacity:.85}
 figure.photo img{width:100%;height:auto;display:block}
-figure.photo figcaption{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.92rem;
+figure.photo figcaption{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:16px;
   color:var(--cocoa);text-align:center;padding-top:10px;line-height:1.5}
 figure.photo.missing img{display:none}
 figure.photo.missing::before{content:"Photograph from the Society's collections is being prepared for this page.";
@@ -49,9 +55,12 @@ figure.photo.missing::before{content:"Photograph from the Society's collections 
   color:var(--cocoa);font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:15px}
 .media{margin:1.6em 0 2em;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--gold-deep);background:#000}
 .media video{width:100%;display:block}
+.audio{border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);padding:14px 16px;margin:0 0 22px}
+.audio b{display:block;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);margin-bottom:8px}
+.audio audio{width:100%;height:48px;display:block}
 .dyk{background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
   padding:20px 22px;margin:2.2em 0}
-.dyk h2,.aru h2,.cta h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+.dyk h2,.aru h2,.cta h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
 .dyk p{margin:0;font-size:17px}
 .aru{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
@@ -63,7 +72,7 @@ figure.photo.missing::before{content:"Photograph from the Society's collections 
 .cta p:last-child{margin:0}
 .pending{background:var(--parchment-deep);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
   color:var(--ink);padding:16px 20px;font-size:15px;line-height:1.55;margin:22px 0}
-.pending strong{display:block;font-size:.72rem;font-weight:800;letter-spacing:.22em;
+.pending strong{display:block;font-size:13px;font-weight:800;letter-spacing:.22em;
   text-transform:uppercase;color:var(--red-deep);margin-bottom:6px}
 .nextbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--red-deep);
   border-top:3px solid var(--ink);box-shadow:0 -4px 0 rgba(42,33,24,.25);
@@ -76,8 +85,13 @@ figure.photo.missing::before{content:"Photograph from the Society's collections 
 .nextbar .ar{font-size:26px;line-height:1;background:var(--gold);color:var(--ink);border:2px solid var(--ink);
   min-width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex:none}
 .prevlink{margin:1.6em 0 0;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.mapline{border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);
-  padding:14px 18px;margin:28px 0;font-size:16px}
+a.mapline{display:block;border-top:2px solid var(--ink);padding:16px 4px;margin:28px 0 0;font-size:16px;text-decoration:none;color:var(--ink)}
+a.mapline b{color:var(--red-deep);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+a.mapline:hover b{color:var(--ink)}
+.ruled{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
+.ruled h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.ruled p{font-size:16px;margin:0 0 .5em}
+.ruled p:last-child{margin:0}
 .mapline b{letter-spacing:.02em}
 .btn2{display:inline-block;background:var(--mat);color:var(--ink);font-weight:800;text-decoration:none;
   border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:12px 22px;font-size:16px;
@@ -92,70 +106,79 @@ figure.photo.missing::before{content:"Photograph from the Society's collections 
 .shopdot{background:var(--gold);border:2px solid var(--ink);border-radius:50%;box-shadow:1px 1px 0 var(--ink)}
 .leaflet-popup-content{font-family:'Archivo',Arial,sans-serif;font-size:14px}
 .leaflet-popup-content b{font-size:15px}
-.locbtn{background:var(--mat);border:2px solid var(--ink);padding:13px 14px;font-weight:800;cursor:pointer;
-  font-family:'Archivo',Arial,sans-serif;font-size:13px}
+.locbtn{background:var(--mat);border:2px solid var(--ink);padding:12px 16px;font-weight:800;cursor:pointer;
+  font-family:'Archivo',Arial,sans-serif;font-size:16px;min-height:44px}
 #map{position:relative}
 #map .locbtn{position:absolute;top:86px;left:10px;z-index:5}
 .layerbox{position:absolute;top:10px;right:10px;z-index:5;background:var(--mat);border:2px solid var(--ink);padding:4px 12px;font-family:'Archivo',Arial,sans-serif;font-size:15px;font-weight:600}
 .layerbox label{display:block;padding:10px 2px;cursor:pointer}
 .layerbox input{width:19px;height:19px;vertical-align:-4px}
-.biz small a{display:inline-block;padding:6px 0}
+.biz small a{display:inline-block;padding:9px 0}
 .medot{width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid var(--mat);box-shadow:0 0 0 2px var(--ink)}
-.maplibregl-popup-content{font-family:'Archivo',Arial,sans-serif;font-size:14px}
-.maplegend{font-size:14px;margin:14px 0 0;color:var(--cocoa)}
+.maplibregl-popup-content{font-family:'Archivo',Arial,sans-serif;font-size:16px;padding:14px 16px 12px}
+.pbtn{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:8px;border:2px solid var(--ink);background:var(--mat);font-weight:800;text-decoration:none;color:var(--ink)}
+.maplibregl-popup-close-button{width:44px;height:44px;font-size:26px}
+.maplibregl-ctrl-group button{width:44px;height:44px}
+.skipmap{font-size:16px;margin:0 0 10px}
+.mkwrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.maplegend{font-size:16px;margin:14px 0 0;color:var(--cocoa)}
 .leaflet-container a{color:var(--red-deep)}
 a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .cta h2,.cta a,.pending strong{color:var(--ink)}
 /* Two-cell fixed bar: previous left, next right, number plus direction, never a wrapping title */
 .nextbar a{min-height:64px}
 .nextbar .cells{display:flex;max-width:680px;margin:0 auto}
-.nextbar .cells a{flex:1;min-height:64px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:none;letter-spacing:0;font-size:14px;line-height:1.2;padding:6px 0}
+.nextbar .cells a{flex:1;min-height:64px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.15;padding:4px 0}
 .nextbar .cells a b{font-weight:800}
-.nextbar .cells a.prev{flex:0 0 42%;justify-content:flex-start;color:var(--parchment);opacity:.92;border-right:2px solid rgba(247,240,225,.35);margin-right:12px}
+.nextbar .cells a.prev{flex:0 0 auto;justify-content:center;color:var(--parchment);border-right:2px solid rgba(247,240,225,.35);margin-right:12px;padding-right:14px}
 .nextbar .cells a.next{color:var(--parchment);justify-content:space-between}
-.nextbar .nl{color:var(--parchment);opacity:.9;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;display:block;margin-bottom:1px}
-.nextbar .cells .ar.l{background:transparent;color:var(--parchment);border-color:var(--parchment);min-width:32px;height:32px;font-size:20px}
+.nextbar .nl{color:var(--parchment);font-size:12px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;font-weight:800;display:block;margin-bottom:1px}
+.nextbar .cells .ar.l{background:transparent;color:var(--parchment);border-color:var(--parchment);min-width:44px;height:44px;font-size:24px}
 /* Front door */
 .pretitle{font-family:'Archivo',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);margin:0 0 6px}
 .beats{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:22px;line-height:1.3;margin:0 0 16px;color:var(--ink)}
 .band{margin:14px 0 20px;background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--gold);padding:6px}
 .band img{width:100%;height:auto;display:block}
-.band figcaption{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:.9rem;color:var(--cocoa);padding:8px 6px 4px}
+.band figcaption{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:16px;color:var(--cocoa);padding:8px 6px 4px}
 .stats{display:flex;gap:10px;margin:18px 0 6px}
 .stats div{flex:1;border:3px solid var(--ink);background:var(--mat);box-shadow:4px 4px 0 var(--ink);padding:10px 8px;text-align:center}
 .stats b{display:block;font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:24px;line-height:1.1}
-.stats small{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);margin-top:4px}
-.stats span{display:block;font-size:13px;color:var(--cocoa);margin-top:2px}
+.stats small{display:block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);margin-top:4px}
+.stats span{display:block;font-size:16px;color:var(--cocoa);margin-top:2px}
 .plan{border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);padding:18px 20px;margin:22px 0}
-.plan h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
-.plan dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
-.plan dt{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--cocoa);padding-top:3px}
+.plan h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
+.plan dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:16px}
+.plan dt{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--cocoa);padding-top:3px}
 .plan dd{margin:0}
-.stops .t .hook{display:block;font-weight:400;font-size:15px;color:var(--ink);margin-top:2px;line-height:1.35}
+.stops .t .hook{display:block;font-weight:400;font-size:17px;color:var(--ink);margin-top:2px;line-height:1.35}
 .card{display:block;border:3px solid var(--ink);background:var(--mat);box-shadow:6px 6px 0 var(--ink);padding:16px 18px;margin:18px 0;text-decoration:none;color:var(--ink)}
-.card b{display:block;font-family:'Archivo',Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);margin-bottom:4px}
+.card b{display:block;font-family:'Archivo',Arial,sans-serif;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);margin-bottom:4px}
 .card span{font-size:17px;font-weight:700}
 .card:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink)}
 .give{border:3px solid var(--ink);background:var(--parchment-deep);box-shadow:6px 6px 0 var(--gold);padding:20px 22px;margin:26px 0}
-.give h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.give h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .give p{margin:0 0 10px;font-size:17px}
 .give small{display:block;font-size:13px;color:var(--cocoa);margin-bottom:10px}
 .give .btn{font-size:14px;white-space:nowrap;padding:12px 18px}
-.flinks{margin:10px 0 0;font-size:14px}
+.flinks{margin:10px 0 0;font-size:16px}
+.flinks a{display:inline-block;padding:8px 4px}
 footer.site a{color:var(--parchment)}
 .dyk.small{margin-top:14px}
 .privacy h2{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:22px;margin:1.6em 0 .4em}
 footer.site{margin-top:3.4em;background:var(--cocoa);color:var(--parchment);border-top:3px solid var(--ink)}
-footer.site .wrap{padding:26px 20px;font-size:14px;line-height:1.8}
+footer.site .wrap{padding:26px 20px;font-size:16px;line-height:1.8}
 .share{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
-.share h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.share h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .share p{font-size:16px;color:var(--cocoa);margin:0 0 10px}
 .share .row{display:flex;gap:10px;flex-wrap:wrap}
 .share a{display:inline-block;text-decoration:none;color:var(--ink);background:var(--mat);border:3px solid var(--ink);
   box-shadow:4px 4px 0 var(--ink);padding:9px 14px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
 .share a:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+@media(pointer:coarse){.share a.fb{display:none}}
+.share .tellline{font-size:16px;margin:12px 0 0}
+.share .tellline a{display:inline-block;background:none;border:none;box-shadow:none;padding:10px 0;font-weight:700;font-size:16px;letter-spacing:0;text-transform:none;text-decoration:underline;color:var(--red-deep)}
 .evstrip{background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 20px;margin:2em 0 0;font-size:16px}
-.evstrip h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.evstrip h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .evstrip p{margin:0 0 .5em}
 .evstrip p:last-child{margin:0}
 @media print{
@@ -171,16 +194,16 @@ footer.site .wrap{padding:26px 20px;font-size:14px;line-height:1.8}
   footer.site{background:#fff;color:#000;border-top:1px solid #000}
 }
 .branch{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
-.branch h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
+.branch h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .branch p{margin:0 0 .5em;font-size:16px}
 .btn{display:inline-block;background:var(--gold);color:var(--ink);font-weight:800;text-decoration:none;
   padding:14px 22px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font-size:.95rem;
   letter-spacing:.04em;text-transform:uppercase;margin:6px 0 22px}
 .btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);color:var(--ink)}
 /* index + village */
-.routehead{margin:32px 0 4px;font-size:.76rem;font-weight:700;letter-spacing:.22em;
+.routehead{margin:32px 0 4px;font-size:13px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;color:var(--red-deep)}
-.routeblurb{color:var(--cocoa);font-size:15px;margin:0 0 12px}
+.routeblurb{color:var(--cocoa);font-size:16px;margin:0 0 12px}
 ol.stops,ul.stops{list-style:none;margin:0 0 8px;padding:0}
 .stops li{border-bottom:2px solid var(--ink)}
 .stops li:first-child{border-top:2px solid var(--ink)}
@@ -191,18 +214,18 @@ ol.stops,ul.stops{list-style:none;margin:0 0 8px;padding:0}
 .stops .n.wp{background:var(--mat)}
 .stops .n.ext{background:var(--red-deep);color:var(--parchment)}
 .stops .t{flex:1;font-weight:600}
-.stops .t small{display:block;color:var(--cocoa);font-size:14px;font-weight:400}
-.heldtag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+.stops .t small{display:block;color:var(--cocoa);font-size:16px;font-weight:400}
+.heldtag{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
   background:var(--gold);border:2px solid var(--ink);padding:1px 8px;margin-left:8px;white-space:nowrap}
 .practical{background:var(--mat);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
   padding:22px 24px;margin:30px 0;font-size:16px}
-.practical h2{font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+.practical h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--red-deep);margin:0 0 10px;font-family:'Archivo',Arial,sans-serif}
 .practical p{margin:0 0 .6em}
 h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;margin:1.8em 0 .4em}
 .biz{border-bottom:2px solid var(--parchment-deep);padding:10px 0}
 .biz b{font-size:17px}
-.biz small{display:block;color:var(--cocoa);font-size:14px}
+.biz small{display:block;color:var(--cocoa);font-size:16px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
   nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
 
@@ -212,12 +235,13 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
    flows into two columns (CSS multicol, so any future stop count rebalances itself). */
 @media(min-width:1000px){
   body{background:#E7DCC3}
-  header.site .wrap{max-width:1080px;flex-wrap:nowrap;row-gap:0}
+  header.site .wrap{max-width:min(1000px,calc(100vw - 56px));flex-wrap:nowrap;row-gap:0;padding-left:0;padding-right:0}
   nav.top{width:auto;justify-content:flex-end;flex-wrap:nowrap}
   main.wrap{max-width:min(1000px,calc(100vw - 56px));padding:2px 160px 46px;background:var(--parchment);
     border-left:1px solid rgba(42,33,24,.22);border-right:1px solid rgba(42,33,24,.22)}
   main.wrap figure.band,main.wrap figure.photo,main.wrap #map{margin-left:-92px;margin-right:-92px}
   ol.stops{columns:2;column-gap:36px}
+  main.wrap > figure.photo:first-of-type img{max-height:58vh;width:auto;max-width:100%;margin:0 auto}
   ol.stops li{break-inside:avoid}
   footer.site{margin-top:0}
 }
@@ -243,7 +267,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <div class="stats"><div><b>22</b><small>Stops</small><span>13 on the loop, 5 on the extension, 4 waypoints</span></div><div><b>1 mi</b><small>Distance</small><span>the loop; half a mile more on the extension</span></div><div><b>1 hr</b><small>Time</small><span>the loop, at a reading pace</span></div></div>
 <div class="plan"><h2>Plan Your Visit</h2><dl>
 <dt>Start at</dt><dd>Old Town Hall, 62 South Main Street, Mullica Hill, NJ 08062 · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.731123,-75.224405">Get directions</a></dd>
-<dt>Museum</dt><dd>Open weekend afternoons in its spring and fall exhibit seasons, and by appointment; <a href="https://www.harrisonhistorical.com/">current dates and hours are on the Society&#39;s site</a>. Admission is free.</dd>
+<dt>Museum</dt><dd>Open weekend afternoons in its spring and fall exhibit seasons, and by appointment; <a href="https://www.harrisonhistorical.com/museum">current dates and hours are on the Society&#39;s museum page</a>. Admission is free.</dd>
 <dt>Parking</dt><dd>Free street parking throughout the village.</dd>
 <dt>Restrooms</dt><dd>Inside the museum during open hours.</dd>
 <dt>Access</dt><dd>Paved sidewalks throughout the village.</dd>
@@ -255,5 +279,5 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <ol class="stops">
 <li><a href="old-town-hall/index.html"><span class="n ">1</span><span class="t">Old Town Hall<span class="hook">Built on five-dollar shares, moved on rollers in 1920, home of the museum.</span><small>1871 · 62 South Main Street</small></span></a></li><li><a href="union-academy/index.html"><span class="n wp">A</span><span class="t">The School That Moved<span class="hook">Six schoolhouses on one lot since about 1720. One is now a house.</span><small>24 and 26 Woodstown Road</small></span></a></li><li><a href="friends-meeting-house/index.html"><span class="n ">2</span><span class="t">Friends Meeting House<span class="hook">The 1808 gable fell in a great wind. The meeting rebuilt and never left.</span><small>1808 · South Main &amp; Woodstown Road</small></span></a></li><li><a href="american-store/index.html"><span class="n wp">B</span><span class="t">The Letters in the Iron<span class="hook">Four iron letters under a shop window, left by the chain that became Acme.</span><small>c. 1925 · 54 South Main Street</small></span></a></li><li><a href="brick-row/index.html"><span class="n ">3</span><span class="t">The Brick Row<span class="hook">Already standing in the town's earliest picture, 1844. Almost nothing has moved since.</span><small>1771 · South Main at High Street</small></span></a></li><li><a href="wolf-funeral-home/index.html"><span class="n ">4</span><span class="t">Wolf Funeral Home<span class="hook">In 1889 he advertised a Patent Corpse Preserver. Then the dead came to him.</span><small>c. 1810 · 30 South Main Street</small></span></a></li><li><a href="iredell-house/index.html"><span class="n ">5</span><span class="t">The Harness Maker's Post Office<span class="hook">For thirteen years the whole post office fit inside a harness maker's house.</span><small>c. 1840 · 26 South Main Street</small></span></a></li><li><a href="first-baptist/index.html"><span class="n ">6</span><span class="t">First Baptist Church<span class="hook">Eighteen founders, Gloucester County's first Baptist church, and Union soldiers at rest behind it.</span><small>1845 · 18 South Main Street</small></span></a></li><li><a href="gaunt-house/index.html"><span class="n ">7</span><span class="t">The Gaunt House<span class="hook">A senator who answered the fire bell, and the sewing factory in his attic.</span><small>c. 1885 · 14 South Main Street</small></span></a></li><li><a href="warehouse/index.html"><span class="n ">8</span><span class="t">The Warehouse<span class="hook">Nearly a million bushels of sweet potatoes, and asparagus flown to Massachusetts in 1922.</span><small>c. 1890 · 2 South Main Street</small></span></a></li><li><a href="old-mill/index.html"><span class="n ">9</span><span class="t">The Old Mill<span class="hook">In 1964 a tractor-trailer came through the wall. The feed counter never closed.</span><small>1880s · 1 South Main Street</small></span></a></li><li><a href="the-bridge/index.html"><span class="n wp">C</span><span class="t">The Bridge Under the Bridge<span class="hook">Under this road lie the piers of the prettiest bridge the village ever had.</span><small>Raccoon Creek crossing</small></span></a></li><li><a href="mullica-house/index.html"><span class="n ext">N1</span><span class="t">Mullica House<span class="hook">Named for a family whose world vanished, except for this one little house.</span><small>Early 1700s · 20 North Main Street</small></span></a></li><li><a href="farmers-bank/index.html"><span class="n ext">N2</span><span class="t">Old Farmers National Bank<span class="hook">Four young men, everyone tied up, and 8,370 Depression dollars gone in 1932.</span><small>1903 · 28 North Main Street</small></span></a></li><li><a href="union-store/index.html"><span class="n ext">N3</span><span class="t">The Union Store<span class="hook">Ever wondered why Mullica Hill is an antiques town? Start with this building.</span><small>1866 · 46 North Main Street</small></span></a></li><li><a href="st-stephens/index.html"><span class="n ext">N4</span><span class="t">St. Stephen's Episcopal Church<span class="hook">The town clock since 1880, and the congregation that brought its dead along.</span><small>1853 · 51 North Main Street</small></span></a></li><li><a href="ware-law-office/index.html"><span class="n ext">N5</span><span class="t">The Ware Law Office<span class="hook">The town's first lawyer, a chair-maker's son, and the tiny office beside his house.</span><small>1850 · 53 North Main Street</small></span></a></li><li><a href="hoffman-foundry/index.html"><span class="n ">10</span><span class="t">The Foundry That Turned Around<span class="hook">The foundry that turned to face another street. Walk around back to find it.</span><small>1857 · South Main &amp; East Church Streets</small></span></a></li><li><a href="trinity-church/index.html"><span class="n ">11</span><span class="t">Trinity Methodist Church<span class="hook">Two churches in twenty-one years, and a parsonage from the town's first car dealer.</span><small>1848 · South Main Street</small></span></a></li><li><a href="stratton-house/index.html"><span class="n ">12</span><span class="t">The Stratton House<span class="hook">He kept the bullet that took his leg, and showed it from this porch.</span><small>1848 &middot; 39 South Main Street</small></span></a></li><li><a href="eagle-hotel/index.html"><span class="n ">13</span><span class="t">Old Eagle Hotel<span class="hook">A tavern four years older than the United States, where the township was born.</span><small>Est. 1772 · 51 South Main Street</small></span></a></li><li><a href="spicer-folwell/index.html"><span class="n wp">D</span><span class="t">The Spicer House<span class="hook">This side of the creek was Spicerville once, and this was Spicer's house.</span><small>Mid-1700s · 76 South Main Street</small></span></a></li>
 </ol>
-<a class="card" href="./village/index.html"><b>Make a Day of It</b><span>Eat &amp; Shop on Main Street &#8594;</span></a>
+<div class="share"><h2>Send This Tour to Someone</h2><p>Know someone who grew up here, or someone who should visit?</p><div class="row"><a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmhwalk.com%2F" data-u="https://mhwalk.com/" rel="noopener" target="_blank" onclick="if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({url:this.dataset.u});return false;}">Share on Facebook</a><a href="https://mhwalk.com/" data-u="https://mhwalk.com/" onclick="var u=this.dataset.u;if(navigator.share){navigator.share({title:'Mullica Hill Historic Walking Tour',url:u});}else{if(navigator.clipboard){navigator.clipboard.writeText(u);}this.textContent='Link copied';}return false;">Share the tour</a></div><p class="tellline"><a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Follow the Society on Facebook &#8594;</a></p></div><a class="card" href="./village/index.html"><b>Make a Day of It</b><span>Eat &amp; Shop on Main Street &#8594;</span></a>
 </main><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="./index.html">Tour Home</a> · <a href="./privacy/index.html">Privacy</a></p></div></footer></body></html>
