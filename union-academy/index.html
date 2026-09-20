@@ -250,7 +250,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
  function show(src, text){ im.src=src; cap.textContent=text||''; reset();
   lb.classList.add('open'); document.body.style.overflow='hidden'; open=true;
   try{ history.pushState({lb:1}, ''); }catch(e){} }
- function hide(){ lb.classList.remove('open'); document.body.style.overflow=''; open=false; im.src=''; }
+ function hide(){ lb.classList.remove('open'); document.body.style.overflow=''; open=false; im.src=''; lb.style.opacity=''; im.style.transition=''; }
  function closeUI(){ if(open){ if(history.state && history.state.lb){ history.back(); } else { hide(); } } }
  window.addEventListener('popstate', function(){ if(open) hide(); });
  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeUI(); });
@@ -263,23 +263,28 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
    show(t.currentSrc || t.src, c ? c.textContent : (t.alt||''));
   });
  });
- var pts=new Map(), startDist=0, startSc=1, panX=0, panY=0, startTx=0, startTy=0, lastTap=0;
+ var pts=new Map(), startDist=0, startSc=1, panX=0, panY=0, startTx=0, startTy=0, lastTap=0, swT=0, moved=0;
  function dist(){ var a=[]; pts.forEach(function(v){a.push(v);});
   return Math.hypot(a[0].x-a[1].x, a[0].y-a[1].y); }
  im.addEventListener('pointerdown', function(e){ e.preventDefault();
   pts.set(e.pointerId, {x:e.clientX, y:e.clientY});
   if(pts.size===2){ startDist=dist(); startSc=sc; }
-  else if(pts.size===1){ panX=e.clientX; panY=e.clientY; startTx=tx; startTy=ty; }
+  else if(pts.size===1){ panX=e.clientX; panY=e.clientY; startTx=tx; startTy=ty; swT=Date.now(); moved=0; im.style.transition=''; }
   im.setPointerCapture(e.pointerId); });
  im.addEventListener('pointermove', function(e){ if(!pts.has(e.pointerId)) return;
   pts.set(e.pointerId, {x:e.clientX, y:e.clientY});
   if(pts.size===2 && startDist>0){ sc=Math.min(4, Math.max(1, startSc*dist()/startDist)); if(sc===1){tx=0;ty=0;} apply(); }
-  else if(pts.size===1 && sc>1){ tx=startTx+(e.clientX-panX); ty=startTy+(e.clientY-panY); apply(); } });
+  else if(pts.size===1){ var dx=e.clientX-panX, dy=e.clientY-panY; moved=Math.max(moved, Math.hypot(dx,dy));
+   if(sc>1){ tx=startTx+dx; ty=startTy+dy; apply(); }
+   else { tx=dx*0.35; ty=dy; apply(); lb.style.opacity=Math.max(0.4, 1-Math.abs(dy)/300); } } });
  function lift(e){ pts.delete(e.pointerId); startDist=0; }
  im.addEventListener('pointerup', function(e){ lift(e);
+  if(sc===1){ var dy=e.clientY-panY, dt=Date.now()-swT;
+   if(pts.size===0 && (Math.abs(dy)>80 || (Math.abs(dy)>48 && dt<250))){ closeUI(); reset(); return; }
+   if(moved>12){ im.style.transition='transform .18s'; lb.style.opacity=''; reset(); setTimeout(function(){ im.style.transition=''; }, 220); } }
   var now=Date.now();
-  if(now-lastTap<300){ if(sc>1){ reset(); } else { sc=2.5; tx=(wrap.clientWidth/2-e.clientX)*1.5; ty=(wrap.clientHeight/2-e.clientY)*1.5; apply(); } lastTap=0; }
-  else { lastTap=now; } });
- im.addEventListener('pointercancel', lift);
+  if(moved<12){ if(now-lastTap<300){ if(sc>1){ reset(); } else { sc=2.5; tx=(wrap.clientWidth/2-e.clientX)*1.5; ty=(wrap.clientHeight/2-e.clientY)*1.5; apply(); } lastTap=0; }
+  else { lastTap=now; } } });
+ im.addEventListener('pointercancel', function(e){ lift(e); if(sc===1){ lb.style.opacity=''; reset(); } });
  im.addEventListener('dblclick', function(e){ e.preventDefault(); });
 })();</script><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>
