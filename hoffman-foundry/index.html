@@ -225,7 +225,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <!-- ANALYTICS (GoatCounter) DISABLED. To enable: create the site at goatcounter.com, replace MYCODE, uncomment.
 <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 -->
-<style>#lb{position:fixed;inset:0;background:rgba(26,20,14,.95);z-index:60;display:none;flex-direction:column}#lb.open{display:flex}#lb .lbwrap{flex:1;overflow:hidden;touch-action:none;display:flex;align-items:center;justify-content:center}#lb img{max-width:96vw;max-height:82vh;transform-origin:0 0;user-select:none;-webkit-user-drag:none}#lb .lbcap{color:var(--parchment);font-family:'Archivo',Arial,sans-serif;font-size:14px;line-height:1.45;padding:10px 18px 16px;text-align:center}#lb .lbx{position:absolute;top:12px;right:12px;width:48px;height:48px;background:var(--mat);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);font:800 26px/1 'Archivo',Arial,sans-serif;cursor:pointer;z-index:61}figure.photo img{cursor:zoom-in}figure.photo.missing img{cursor:default}</style></head><body>
+<style>#lb{position:fixed;inset:0;background:rgba(26,20,14,.95);z-index:60;display:none;flex-direction:column}#lb.open{display:flex}#lb .lbwrap{flex:1;overflow:hidden;touch-action:none;display:flex;align-items:center;justify-content:center}#lb img{max-width:96vw;max-height:82vh;transform-origin:0 0;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;touch-action:none}#lb .lbcap{color:var(--parchment);font-family:'Archivo',Arial,sans-serif;font-size:14px;line-height:1.45;padding:10px 18px 16px;text-align:center}#lb .lbx{position:absolute;top:12px;right:12px;width:48px;height:48px;background:var(--mat);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);font:800 26px/1 'Archivo',Arial,sans-serif;cursor:pointer;z-index:61}figure.photo img{cursor:zoom-in}figure.photo.missing img{cursor:default}</style></head><body>
 <header class="site"><div class="wrap">
 <a class="brand" href="../index.html"><img src="../assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
 <nav class="top" aria-label="Site"><a class="on" aria-current="page" href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
@@ -259,28 +259,60 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
    show(t.currentSrc || t.src, c ? c.textContent : (t.alt||''));
   });
  });
- var pts=new Map(), startDist=0, startSc=1, panX=0, panY=0, startTx=0, startTy=0, lastTap=0, swT=0, moved=0;
- function dist(){ var a=[]; pts.forEach(function(v){a.push(v);});
-  return Math.hypot(a[0].x-a[1].x, a[0].y-a[1].y); }
- im.addEventListener('pointerdown', function(e){ e.preventDefault();
-  pts.set(e.pointerId, {x:e.clientX, y:e.clientY});
-  if(pts.size===2){ startDist=dist(); startSc=sc; }
-  else if(pts.size===1){ panX=e.clientX; panY=e.clientY; startTx=tx; startTy=ty; swT=Date.now(); moved=0; im.style.transition=''; }
-  im.setPointerCapture(e.pointerId); });
- im.addEventListener('pointermove', function(e){ if(!pts.has(e.pointerId)) return;
-  pts.set(e.pointerId, {x:e.clientX, y:e.clientY});
-  if(pts.size===2 && startDist>0){ sc=Math.min(4, Math.max(1, startSc*dist()/startDist)); if(sc===1){tx=0;ty=0;} apply(); }
-  else if(pts.size===1){ var dx=e.clientX-panX, dy=e.clientY-panY; moved=Math.max(moved, Math.hypot(dx,dy));
-   if(sc>1){ tx=startTx+dx; ty=startTy+dy; apply(); }
-   else { tx=dx*0.35; ty=dy; apply(); lb.style.opacity=Math.max(0.4, 1-Math.abs(dy)/300); } } });
- function lift(e){ pts.delete(e.pointerId); startDist=0; }
- im.addEventListener('pointerup', function(e){ lift(e);
-  if(sc===1){ var dy=e.clientY-panY, dt=Date.now()-swT;
-   if(pts.size===0 && (Math.abs(dy)>80 || (Math.abs(dy)>48 && dt<250))){ closeUI(); reset(); return; }
-   if(moved>12){ im.style.transition='transform .18s'; lb.style.opacity=''; reset(); setTimeout(function(){ im.style.transition=''; }, 220); } }
-  var now=Date.now();
-  if(moved<12){ if(now-lastTap<300){ if(sc>1){ reset(); } else { sc=2.5; tx=(wrap.clientWidth/2-e.clientX)*1.5; ty=(wrap.clientHeight/2-e.clientY)*1.5; apply(); } lastTap=0; }
-  else { lastTap=now; } } });
- im.addEventListener('pointercancel', function(e){ lift(e); if(sc===1){ lb.style.opacity=''; reset(); } });
- im.addEventListener('dblclick', function(e){ e.preventDefault(); });
+ function snapback(){ im.style.transition='transform .18s'; lb.style.opacity=''; reset();
+  setTimeout(function(){ im.style.transition=''; }, 220); }
+ function zoomAt(x, y){ var r=im.getBoundingClientRect();
+  var L0x=r.left-tx, L0y=r.top-ty, qx=(x-r.left)/sc, qy=(y-r.top)/sc;
+  sc=2.5; tx=x-L0x-qx*sc; ty=y-L0y-qy*sc; apply(); }
+ /* Touch devices: touch events are the native path (pointer-event pinch is unreliable on iOS Safari). */
+ var mode=null, sd=0, s0=1, L0x=0, L0y=0, qx=0, qy=0, px=0, py=0, tx0=0, ty0=0, t0=0, moved=0, lastTap=0, ltx=0, lty=0;
+ function tdist(t){ return Math.hypot(t[0].clientX-t[1].clientX, t[0].clientY-t[1].clientY); }
+ im.addEventListener('touchstart', function(e){ e.preventDefault();
+  im.style.transition='';
+  if(e.touches.length===2){ mode='pinch'; sd=tdist(e.touches); s0=sc;
+   var r=im.getBoundingClientRect();
+   var mx=(e.touches[0].clientX+e.touches[1].clientX)/2, my=(e.touches[0].clientY+e.touches[1].clientY)/2;
+   L0x=r.left-tx; L0y=r.top-ty; qx=(mx-r.left)/sc; qy=(my-r.top)/sc;
+   lb.style.opacity=''; }
+  else if(e.touches.length===1){ mode='drag'; px=e.touches[0].clientX; py=e.touches[0].clientY;
+   tx0=tx; ty0=ty; t0=Date.now(); moved=0; }
+ }, {passive:false});
+ im.addEventListener('touchmove', function(e){ e.preventDefault();
+  if(mode==='pinch' && e.touches.length>=2 && sd>0){
+   var mx=(e.touches[0].clientX+e.touches[1].clientX)/2, my=(e.touches[0].clientY+e.touches[1].clientY)/2;
+   sc=Math.min(4, Math.max(1, s0*tdist(e.touches)/sd));
+   if(sc===1){ tx=0; ty=0; } else { tx=mx-L0x-qx*sc; ty=my-L0y-qy*sc; }
+   apply(); }
+  else if(mode==='drag' && e.touches.length===1){
+   var dx=e.touches[0].clientX-px, dy=e.touches[0].clientY-py;
+   moved=Math.max(moved, Math.hypot(dx,dy));
+   if(sc>1){ tx=tx0+dx; ty=ty0+dy; apply(); }
+   else { tx=dx*0.35; ty=dy; apply(); lb.style.opacity=Math.max(0.4, 1-Math.abs(dy)/300); } }
+ }, {passive:false});
+ im.addEventListener('touchend', function(e){ e.preventDefault();
+  if(e.touches.length===0){
+   if(mode==='drag'){
+    var t=e.changedTouches[0], dy=t.clientY-py, dt=Date.now()-t0, now=Date.now();
+    if(sc===1 && (Math.abs(dy)>80 || (Math.abs(dy)>48 && dt<250))){ closeUI(); reset(); mode=null; return; }
+    if(sc===1 && moved>12){ snapback(); }
+    if(moved<12 && dt<300){
+     if(now-lastTap<300 && Math.hypot(t.clientX-ltx, t.clientY-lty)<40){
+      if(sc>1){ snapback(); } else { zoomAt(t.clientX, t.clientY); } lastTap=0; }
+     else { lastTap=now; ltx=t.clientX; lty=t.clientY; } } }
+   else if(mode==='pinch' && sc===1){ tx=0; ty=0; apply(); }
+   mode=null; }
+  else if(e.touches.length===1){ mode='drag'; px=e.touches[0].clientX; py=e.touches[0].clientY;
+   tx0=tx; ty0=ty; t0=Date.now(); moved=99; }
+ }, {passive:false});
+ im.addEventListener('touchcancel', function(){ mode=null; if(sc===1){ lb.style.opacity=''; reset(); } });
+ /* Mouse: drag to pan when zoomed, double-click to zoom. Touch pointers are ignored here. */
+ var mdown=false, mX=0, mY=0, mTx=0, mTy=0;
+ im.addEventListener('pointerdown', function(e){ if(e.pointerType==='touch') return; e.preventDefault();
+  mdown=true; mX=e.clientX; mY=e.clientY; mTx=tx; mTy=ty; im.setPointerCapture(e.pointerId); });
+ im.addEventListener('pointermove', function(e){ if(e.pointerType==='touch' || !mdown) return;
+  if(sc>1){ tx=mTx+(e.clientX-mX); ty=mTy+(e.clientY-mY); apply(); } });
+ im.addEventListener('pointerup', function(e){ if(e.pointerType==='touch') return; mdown=false; });
+ im.addEventListener('pointercancel', function(e){ if(e.pointerType==='touch') return; mdown=false; });
+ im.addEventListener('dblclick', function(e){ e.preventDefault();
+  if(sc>1){ reset(); } else { zoomAt(e.clientX, e.clientY); } });
 })();</script><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>
