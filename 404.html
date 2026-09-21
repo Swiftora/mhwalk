@@ -222,6 +222,13 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 .biz small{display:block;color:var(--cocoa);font-size:16px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
   nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
+/* Phone header overflow fix (owner-directed, 2026-09-21): the nowrap Society subline laid
+   pages out 400px wide on 393px phones. These rules come after the header and nav rules
+   above so they win; the desktop min-width rules below are untouched. */
+.brand,.brand .bw{min-width:0}
+.brand .bs{white-space:normal;line-height:1.25}
+@media (max-width:480px){.brand .bs{letter-spacing:.06em}}
+@media (max-width:389px){nav.top{gap:6px}nav.top a{padding-left:9px;padding-right:9px}}
 
 /* Desktop treatment (owner-approved variant A, 2026-09-13): the reading column stays 680,
    the page mounts as a sheet on a darker parchment ground, the header runs one line,

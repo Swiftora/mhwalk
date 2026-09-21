@@ -225,6 +225,13 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 .biz small{display:block;color:var(--cocoa);font-size:16px}
 @media(max-width:600px){header.site .wrap{flex-wrap:wrap;row-gap:4px;padding:10px 20px}
   nav.top{width:100%;justify-content:center;gap:8px}nav.top a{font-size:14px;padding:10px 12px}}
+/* Phone header overflow fix (owner-directed, 2026-09-21): the nowrap Society subline laid
+   pages out 400px wide on 393px phones. These rules come after the header and nav rules
+   above so they win; the desktop min-width rules below are untouched. */
+.brand,.brand .bw{min-width:0}
+.brand .bs{white-space:normal;line-height:1.25}
+@media (max-width:480px){.brand .bs{letter-spacing:.06em}}
+@media (max-width:389px){nav.top{gap:6px}nav.top a{padding-left:9px;padding-right:9px}}
 
 /* Desktop treatment (owner-approved variant A, 2026-09-13): the reading column stays 680,
    the page mounts as a sheet on a darker parchment ground, the header runs one line,
@@ -343,4 +350,4 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
  im.addEventListener('pointercancel', function(e){ if(e.pointerType==='touch') return; mdown=false; });
  im.addEventListener('dblclick', function(e){ e.preventDefault();
   if(sc>1){ reset(); } else { zoomAt(e.clientX, e.clientY); } });
-})();</script><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>
+})();</script><script src="../assets/ghost.js" defer></script><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer></body></html>
