@@ -294,6 +294,10 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
   t.addEventListener('click', openIt);
   t.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openIt(); } });
  });
+ document.querySelectorAll('[data-lb-open]').forEach(function(a){
+  a.addEventListener('click', function(e){ e.preventDefault(); trigger=a;
+   show(a.getAttribute('data-lb-open'), a.getAttribute('data-lb-cap')||''); });
+ });
  function snapback(){ im.style.transition='transform .18s'; lb.style.opacity=''; reset();
   setTimeout(function(){ im.style.transition=''; }, 220); }
  function zoomAt(x, y){ var r=im.getBoundingClientRect();
