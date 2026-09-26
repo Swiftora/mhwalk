@@ -82,12 +82,15 @@
   /* ---------- styles ---------- */
   var css = [
     '.gh-holder{position:relative;display:block}',
-    '.gh-open{position:absolute;left:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:8px;',
-    'min-height:44px;padding:10px 14px;max-width:75%;cursor:pointer;',
+    '.gh-open{position:absolute;left:8px;bottom:8px;z-index:2;display:inline-flex;align-items:center;gap:6px;',
+    'padding:7px 10px;max-width:60%;cursor:pointer;',
     'background:var(--mat,#FFFDF7);color:var(--ink,#2A2118);border:2px solid var(--ink,#2A2118);',
-    'box-shadow:3px 3px 0 var(--ink,#2A2118);font:800 13px/1.2 Archivo,Arial,sans-serif;',
+    'box-shadow:2px 2px 0 var(--ink,#2A2118);font:800 11px/1.2 Archivo,Arial,sans-serif;',
     'letter-spacing:.05em;text-transform:uppercase;border-radius:0;-webkit-appearance:none;appearance:none}',
-    '.gh-open svg{flex:none}',
+    /* Owner 2026-09-26: visually small so it covers less photograph, but the tap area stays
+       44px+ through an invisible halo around the chip. */
+    '.gh-open::before{content:"";position:absolute;inset:-10px}',
+    '.gh-open svg{flex:none;width:16px;height:16px}',
     '.gh-open:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink,#2A2118)}',
     'figure.photo.missing .gh-open{display:none}',
     '.gh-open:focus-visible,.gh-d button:focus-visible,.gh-d a:focus-visible,.gh-d input:focus-visible{outline:3px solid var(--gold,#E9A93B);outline-offset:2px}',
