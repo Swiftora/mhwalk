@@ -40,6 +40,7 @@
     fileName: 'mullica-hill-then-and-now.jpg',
     text: {
       open: 'Tap to hold this photo up to the street',
+      openShort: 'See it today',
       dialogLabel: 'Camera view: the old photo over the street today',
       safety: 'Stay on the sidewalk. Watch for traffic.',
       close: 'Close',
@@ -80,11 +81,15 @@
 
   /* ---------- styles ---------- */
   var css = [
-    '.gh-open{display:block;width:100%;margin:12px 0 0;min-height:48px;padding:12px 14px;cursor:pointer;',
-    'background:var(--mat,#FFFDF7);color:var(--ink,#2A2118);border:3px solid var(--ink,#2A2118);',
-    'box-shadow:4px 4px 0 var(--ink,#2A2118);font:800 14px/1.25 Archivo,Arial,sans-serif;',
+    '.gh-holder{position:relative;display:block}',
+    '.gh-open{position:absolute;left:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:8px;',
+    'min-height:44px;padding:10px 14px;max-width:75%;cursor:pointer;',
+    'background:var(--mat,#FFFDF7);color:var(--ink,#2A2118);border:2px solid var(--ink,#2A2118);',
+    'box-shadow:3px 3px 0 var(--ink,#2A2118);font:800 13px/1.2 Archivo,Arial,sans-serif;',
     'letter-spacing:.05em;text-transform:uppercase;border-radius:0;-webkit-appearance:none;appearance:none}',
-    '.gh-open:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink,#2A2118)}',
+    '.gh-open svg{flex:none}',
+    '.gh-open:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink,#2A2118)}',
+    'figure.photo.missing .gh-open{display:none}',
     '.gh-open:focus-visible,.gh-d button:focus-visible,.gh-d a:focus-visible,.gh-d input:focus-visible{outline:3px solid var(--gold,#E9A93B);outline-offset:2px}',
     '@media print{.gh-open{display:none}}',
 
@@ -172,13 +177,19 @@
   Array.prototype.forEach.call(figures, function (fig) {
     var img = fig.querySelector('img');
     if (!img || fig.classList.contains('missing')) return;
-    var b = make('button', 'gh-open', T.open);
+    var holder = make('div', 'gh-holder');
+    img.parentNode.insertBefore(holder, img);
+    holder.appendChild(img);
+    var b = make('button', 'gh-open');
     b.type = 'button';
+    b.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h3.5L9 5h6l2.5 3H21v12H3z"></path><circle cx="12" cy="13.5" r="3.5"></circle></svg>';
+    b.appendChild(make('span', '', T.openShort));
+    b.setAttribute('aria-label', T.open);
     b.addEventListener('click', function () {
       if (!img.naturalWidth) return;
       openView(fig.getAttribute('data-ghost-src') || img.currentSrc || img.src, b);
     });
-    fig.appendChild(b);
+    holder.appendChild(b);
   });
 
   /* ---------- dialog ---------- */

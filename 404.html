@@ -103,7 +103,7 @@ a.mapline:hover b{color:var(--ink)}
 .locbtn{background:var(--mat);border:2px solid var(--ink);padding:12px 16px;font-weight:800;cursor:pointer;
   font-family:'Archivo',Arial,sans-serif;font-size:16px;min-height:44px}
 #map{position:relative}
-#map .locbtn{position:absolute;top:86px;left:10px;z-index:5}
+#map .locbtn{position:absolute;top:110px;left:10px;z-index:5}
 .layerbox{position:absolute;top:10px;right:10px;z-index:5;background:var(--mat);border:2px solid var(--ink);padding:4px 12px;font-family:'Archivo',Arial,sans-serif;font-size:15px;font-weight:600}
 .layerbox label{display:block;padding:10px 2px;cursor:pointer}
 .layerbox input{width:19px;height:19px;vertical-align:-4px}
@@ -114,6 +114,9 @@ a.mapline:hover b{color:var(--ink)}
 .maplibregl-popup-close-button{width:44px;height:44px;font-size:26px}
 .maplibregl-ctrl-group button{width:44px;height:44px}
 .skipmap{font-size:16px;margin:0 0 10px}
+/* UI review 2026-09-26, finding 8: standalone action links carry a 44px-tall touch box.
+   The negative margins keep the visual line height; only the tap area grows. */
+.act a,.skipmap a,.plan dd a,a.tap{display:inline-block;padding:12px 0;margin:-8px 0}
 .mkwrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .maplegend{font-size:16px;margin:14px 0 0;color:var(--cocoa)}
 .leaflet-container a{color:var(--red-deep)}
@@ -124,6 +127,9 @@ a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .nextbar .cells{display:flex;max-width:680px;margin:0 auto}
 .nextbar .cells a{flex:1;min-height:64px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.15;padding:4px 0}
 .nextbar .cells a b{font-weight:800}
+/* One line, always: the title truncates with an ellipsis rather than wrapping the bar taller */
+.nextbar .cells a.next > span:first-child{min-width:0}
+.nextbar .nt{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nextbar .cells a.prev{flex:0 0 auto;justify-content:center;color:var(--parchment);border-right:2px solid rgba(247,240,225,.35);margin-right:12px;padding-right:14px}
 .nextbar .cells a.next{color:var(--parchment);justify-content:space-between}
 .nextbar .nl{color:var(--parchment);font-size:12px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;font-weight:800;display:block;margin-bottom:1px}
