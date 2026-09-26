@@ -39,7 +39,7 @@
     siteLabel: 'mhwalk.com',  // printed on the saved picture
     fileName: 'mullica-hill-then-and-now.jpg',
     text: {
-      open: 'Hold this photo up to the street',
+      open: 'Tap to hold this photo up to the street',
       dialogLabel: 'Camera view: the old photo over the street today',
       safety: 'Stay on the sidewalk. Watch for traffic.',
       close: 'Close',
