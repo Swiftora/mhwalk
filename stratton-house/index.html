@@ -106,6 +106,8 @@ a.mapline:hover b{color:var(--ink)}
 .locbtn{background:var(--mat);border:2px solid var(--ink);padding:8px 12px;font-weight:800;cursor:pointer;
   font-family:'Archivo',Arial,sans-serif;font-size:14px;min-height:40px}
 #map{position:relative}
+.mapfail{padding:22px 18px;font-size:17px;line-height:1.55}
+.mapfail a{color:var(--red-deep);font-weight:800}
 #map .locbtn{position:absolute;top:110px;left:10px;z-index:5}
 .layerbox{position:absolute;top:10px;right:10px;z-index:5;background:var(--mat);border:2px solid var(--ink);padding:4px 12px;font-family:'Archivo',Arial,sans-serif;font-size:15px;font-weight:600}
 .layerbox label{display:block;padding:10px 2px;cursor:pointer}
@@ -120,6 +122,10 @@ a.mapline:hover b{color:var(--ink)}
 /* UI review 2026-09-26, finding 8: standalone action links carry a 44px-tall touch box.
    The negative margins keep the visual line height; only the tap area grows. */
 .act a,.skipmap a,.plan dd a,a.tap{display:inline-block;padding:12px 0;margin:-8px 0}
+.orient{font-size:14px;color:var(--cocoa);margin:8px 0 0}
+.vjump{font-size:15px;margin:12px 0 0}
+details.stopfold{margin:6px 0 0}
+details.stopfold summary.routehead{cursor:pointer;display:list-item}
 .mkwrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .maplegend{font-size:16px;margin:14px 0 0;color:var(--cocoa)}
 .leaflet-container a{color:var(--red-deep)}
@@ -130,8 +136,11 @@ a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .nextbar .cells{display:flex;max-width:680px;margin:0 auto}
 .nextbar .cells a{flex:1;min-height:64px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.15;padding:4px 0}
 .nextbar .cells a b{font-weight:800}
-/* One line, always: the title truncates with an ellipsis rather than wrapping the bar taller */
-.nextbar .cells a.next > span:first-child{min-width:0}
+/* One line, always: the title truncates with an ellipsis rather than wrapping the bar taller.
+   3A (2026-09-26): min-width:0 must sit on the flex CELL too, or the nowrap title's
+   min-content width pushes the arrow off the right edge at narrow widths. */
+.nextbar .cells a.next{min-width:0}
+.nextbar .cells a.next > span:first-child{flex:1;min-width:0}
 .nextbar .nt{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nextbar .cells a.prev{flex:0 0 auto;justify-content:center;color:var(--parchment);border-right:2px solid rgba(247,240,225,.35);margin-right:12px;padding-right:14px}
 .nextbar .cells a.next{color:var(--parchment);justify-content:space-between}
@@ -171,6 +180,11 @@ footer.site a{color:var(--parchment)}
 footer.site{margin-top:3.4em;background:var(--cocoa);color:var(--parchment);border-top:3px solid var(--ink)}
 footer.site .wrap{padding:26px 20px;font-size:16px;line-height:1.8}
 .share{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
+.shstat{margin:8px 0 0;font-size:15px;font-weight:700;color:var(--cocoa)}
+.shstat:empty{display:none}
+.shman{margin:8px 0 0;font-size:15px}
+.shman input{width:100%;margin-top:6px;font:15px/1.4 'Archivo',Arial,sans-serif;padding:10px;
+  border:2px solid var(--ink);background:var(--mat);color:var(--ink)}
 .share h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .share p{font-size:16px;color:var(--cocoa);margin:0 0 10px}
 .share .row{display:flex;gap:10px;flex-wrap:wrap}
@@ -264,14 +278,13 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <a class="brand" href="../index.html"><img src="../assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
 <nav class="top" aria-label="Site"><a class="on" aria-current="page" href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
 </div></header>
-<main class="wrap"><p class="kicker">Mullica Hill Historic Walking Tour</p><h1>The Stratton House</h1><p class="sub">1848 &middot; 39 South Main Street</p><p class="readmeta">Stop 12 of 13 · Core Loop · Old Town Hall Museum 3 min · <a href="../map/index.html#stratton-house">Map</a></p><figure class="photo"><img src="../assets/stratton-house.jpg" alt="The square house with a bracketed cornice at its flat roofline and a centered entrance." width="1400" height="967" fetchpriority="high" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>The Edward Stratton House.</figcaption></figure>
-<p class="lede">A Mullica Hill man kept the bullet that took his leg, and in his later years he showed it to the town&#39;s children from this porch.</p>
+<main class="wrap"><p class="kicker">Mullica Hill Historic Walking Tour</p><h1>The Stratton House</h1><p class="sub">1848 &middot; 39 South Main Street</p><p class="readmeta">Stop 12 of 13 · Core Loop · Old Town Hall Museum 3 min · <a href="../map/index.html#stratton-house">Map</a> &middot; About 2 min read</p><p class="orient">Start anywhere. Follow the next-stop button to keep exploring.</p><p class="lede">A Mullica Hill man kept the bullet that took his leg, and in his later years he showed it to the town&#39;s children from this porch.</p><figure class="photo"><img src="../assets/stratton-house.jpg" alt="The square house with a bracketed cornice at its flat roofline and a centered entrance." width="1400" height="967" fetchpriority="high" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>The Edward Stratton House.</figcaption></figure>
 <p>Edward L. Stratton, elder son of Congressman Nathan T. Stratton, went to war in 1862 as a captain of the 12th New Jersey Volunteers. Chancellorsville, in May 1863, sent him home: a minié ball shattered his right leg, and the surgeons took the leg off. Stratton asked for the bullet, and he never let it go.</p>
 <figure class="photo"><img src="../assets/stratton-portrait.jpg" alt="Studio portrait of a bearded officer seated in uniform." width="955" height="1600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>Capt. Edward L. Stratton in uniform.</figcaption></figure>
 <p>The Army was not finished with him; 1865 brought him brevets as major and as lieutenant colonel, the citations reading gallant and meritorious service. His family paid the war a second price. His younger brother James, a lieutenant in the same regiment's Company F, was killed at Ream's Station, Virginia, in August 1864, still short of his twenty-first birthday. A fellow officer's tribute survives in the county's 1883 history: "The example of loyalty, of bravery, of an intelligent and dignified manhood which he has left will not soon be forgotten."</p>
 <p>Edward took up life in this house and kept it for half a century, until his death in 1915. The house was worth coming home to. The historic district inventory dates it to 1848, enlarged in 1867, and lingers over the materials: dark red Philadelphia brick laid with fine butter joints, iron porch columns, a widow's walk riding the hip roof. Neighbors remembered the Captain on the porch below it, producing the flattened ball for wide-eyed children, his whole war in the palm of one hand.</p>
 <p>Nor did he retire from the town. When Mullica Hill organized its modern fire company in 1904, the meeting at the Town Hall put Captain Stratton in the chair, and when the county's 1883 history needed a chapter on the Baptist church down the street, Stratton wrote it. The brothers rest today behind that church at Stop 6, the one who came home and the one who did not, a few hundred yards from this porch.</p>
-<div class="dyk"><h2>Did You Know</h2><p>The Captain&#39;s porch still faces Main Street. Look for it from the sidewalk, the way the town&#39;s children once did, waiting for him to bring out the bullet.</p></div><div class="ruled"><h2>The Ghost Walk ends here</h2><p>On the first Saturday of October, the Society's candlelit Ghost Walk brings roughly eight hundred people through the village after dark. It sells out every year.</p><p class="act"><a href="https://www.harrisonhistorical.com/events">Ghost Walk tickets and dates &#8594;</a></p></div><div class="share"><h2>Send This Stop to Someone</h2><p>Know someone who grew up here, or someone who should visit? Two taps.</p><div class="row"><a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmhwalk.com%2Fstratton-house%2F" data-u="https://mhwalk.com/stratton-house/" rel="noopener" target="_blank" onclick="if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({url:this.dataset.u});return false;}">Share on Facebook</a><a href="https://mhwalk.com/stratton-house/" data-t="The Stratton House on the Mullica Hill Historic Walking Tour" data-u="https://mhwalk.com/stratton-house/" onclick="var u=this.dataset.u;if(navigator.share){navigator.share({title:this.dataset.t,url:u});}else{if(navigator.clipboard){navigator.clipboard.writeText(u);}this.textContent='Link copied';}return false;">Share this stop</a></div><p class="tellline"><a href="mailto:hthsmhnj@gmail.com?subject=A%20story%20for%20the%20walking%20tour%3A%20The%20Stratton%20House">Email the Society a story</a></p></div></main><div class="nextbar"><div class="cells"><a class="prev" aria-label="Previous: Stop 11 Trinity Methodist Church" href="../trinity-church/index.html"><span class="ar l" aria-hidden="true">&#8592;</span></a><a class="next" href="../eagle-hotel/index.html"><span><span class="nl">Next stop &middot; 2 min</span><span class="nt">Stop 13 Old Eagle Hotel</span></span><span class="ar">&#8594;</span></a></div></div><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbhint">Pinch or double-tap to zoom. Swipe to close.</div><div class="lbcap"></div></div><script>
+<div class="dyk"><h2>Did You Know</h2><p>The Captain&#39;s porch still faces Main Street. Look for it from the sidewalk, the way the town&#39;s children once did, waiting for him to bring out the bullet.</p></div><div class="ruled"><h2>The Ghost Walk ends here</h2><p>On the first Saturday of October, the Society's candlelit Ghost Walk brings roughly eight hundred people through the village after dark. It sells out every year.</p><p class="act"><a href="https://www.harrisonhistorical.com/events">Ghost Walk tickets and dates &#8594;</a></p></div><div class="share"><h2>Send This Stop to Someone</h2><p>Know someone who grew up here, or someone who should visit? Two taps.</p><div class="row"><a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmhwalk.com%2Fstratton-house%2F" rel="noopener" target="_blank">Share on Facebook</a><a href="https://mhwalk.com/stratton-house/" data-share="1" data-t="The Stratton House on the Mullica Hill Historic Walking Tour" data-u="https://mhwalk.com/stratton-house/">Share this stop</a></div><p class="shstat" role="status" aria-live="polite"></p><p class="shman" hidden><label>Copy this link: <input type="text" readonly value="https://mhwalk.com/stratton-house/"></label></p><p class="tellline"><a href="mailto:hthsmhnj@gmail.com?subject=A%20story%20for%20the%20walking%20tour%3A%20The%20Stratton%20House">Email the Society a story</a></p></div><script>(function(){if(window._mhs)return;window._mhs=1;document.querySelectorAll('.share').forEach(function(box){var st=box.querySelector('.shstat'),man=box.querySelector('.shman');var inp=man?man.querySelector('input'):null;function say(m){if(st)st.textContent=m;}function manual(){if(man){man.hidden=false;say('Copy the link below.');if(inp){try{inp.focus();inp.select();}catch(e){}}}}var g=box.querySelector('a[data-share]');if(!g)return;g.addEventListener('click',function(e){e.preventDefault();var u=g.getAttribute('data-u'),t=g.getAttribute('data-t')||document.title;if(navigator.share){navigator.share({title:t,url:u}).then(function(){say('');},function(err){if(err&&err.name==='AbortError')return;manual();});}else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){say('Link copied.');},function(){manual();});}else{manual();}});});})();</script></main><div class="nextbar"><div class="cells"><a class="prev" aria-label="Previous: Stop 11 Trinity Methodist Church" href="../trinity-church/index.html"><span class="ar l" aria-hidden="true">&#8592;</span></a><a class="next" href="../eagle-hotel/index.html"><span><span class="nl">Next stop &middot; 2 min</span><span class="nt">Stop 13 Old Eagle Hotel</span></span><span class="ar">&#8594;</span></a></div></div><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbhint">Pinch or double-tap to zoom. Swipe to close.</div><div class="lbcap"></div></div><script>
 (function(){
  var lb=document.getElementById('lb'); if(!lb) return;
  var im=lb.querySelector('img'), cap=lb.querySelector('.lbcap'), xbtn=lb.querySelector('.lbx');
@@ -287,7 +300,20 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
   if(trigger){ try{ trigger.focus(); }catch(e){} trigger=null; } }
  function closeUI(){ if(open){ if(history.state && history.state.lb){ history.back(); } else { hide(); } } }
  window.addEventListener('popstate', function(){ if(open) hide(); });
- document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeUI(); });
+ /* UX run 2026-09-26 (3D): while the dialog is open, Tab and Shift+Tab stay inside it,
+    and focus that escapes to the background is pulled back to the first control. Escape,
+    Close, browser Back, focus restore to the trigger, and touch behavior are unchanged. */
+ document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ closeUI(); return; }
+  if(e.key==='Tab' && open){
+   var f=lb.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])');
+   if(!f.length) return;
+   var first=f[0], last=f[f.length-1];
+   if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+   else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+   else if(!lb.contains(document.activeElement)){ e.preventDefault(); first.focus(); }
+  }
+ });
  xbtn.addEventListener('click', closeUI);
  lb.addEventListener('click', function(e){ if(e.target===lb || e.target===wrap || e.target===cap) closeUI(); });
  document.querySelectorAll('figure.photo img').forEach(function(t){

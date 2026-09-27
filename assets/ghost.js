@@ -40,7 +40,7 @@
     fileName: 'mullica-hill-then-and-now.jpg',
     text: {
       open: 'Tap to hold this photo up to the street',
-      openShort: 'See it today',
+      openShort: 'Camera: then & now',   // owner-approved 2026-09-26; full sentence stays in `open` as the aria-label
       dialogLabel: 'Camera view: the old photo over the street today',
       safety: 'Stay on the sidewalk. Watch for traffic.',
       close: 'Close',
@@ -83,7 +83,7 @@
   var css = [
     '.gh-holder{position:relative;display:block}',
     '.gh-open{position:absolute;left:8px;bottom:8px;z-index:2;display:inline-flex;align-items:center;gap:6px;',
-    'padding:7px 10px;max-width:60%;cursor:pointer;',
+    'padding:7px 10px;max-width:75%;cursor:pointer;',
     'background:var(--mat,#FFFDF7);color:var(--ink,#2A2118);border:2px solid var(--ink,#2A2118);',
     'box-shadow:2px 2px 0 var(--ink,#2A2118);font:800 11px/1.2 Archivo,Arial,sans-serif;',
     'letter-spacing:.05em;text-transform:uppercase;border-radius:0;-webkit-appearance:none;appearance:none}',

@@ -106,6 +106,8 @@ a.mapline:hover b{color:var(--ink)}
 .locbtn{background:var(--mat);border:2px solid var(--ink);padding:8px 12px;font-weight:800;cursor:pointer;
   font-family:'Archivo',Arial,sans-serif;font-size:14px;min-height:40px}
 #map{position:relative}
+.mapfail{padding:22px 18px;font-size:17px;line-height:1.55}
+.mapfail a{color:var(--red-deep);font-weight:800}
 #map .locbtn{position:absolute;top:110px;left:10px;z-index:5}
 .layerbox{position:absolute;top:10px;right:10px;z-index:5;background:var(--mat);border:2px solid var(--ink);padding:4px 12px;font-family:'Archivo',Arial,sans-serif;font-size:15px;font-weight:600}
 .layerbox label{display:block;padding:10px 2px;cursor:pointer}
@@ -120,6 +122,10 @@ a.mapline:hover b{color:var(--ink)}
 /* UI review 2026-09-26, finding 8: standalone action links carry a 44px-tall touch box.
    The negative margins keep the visual line height; only the tap area grows. */
 .act a,.skipmap a,.plan dd a,a.tap{display:inline-block;padding:12px 0;margin:-8px 0}
+.orient{font-size:14px;color:var(--cocoa);margin:8px 0 0}
+.vjump{font-size:15px;margin:12px 0 0}
+details.stopfold{margin:6px 0 0}
+details.stopfold summary.routehead{cursor:pointer;display:list-item}
 .mkwrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .maplegend{font-size:16px;margin:14px 0 0;color:var(--cocoa)}
 .leaflet-container a{color:var(--red-deep)}
@@ -130,8 +136,11 @@ a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .nextbar .cells{display:flex;max-width:680px;margin:0 auto}
 .nextbar .cells a{flex:1;min-height:64px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.15;padding:4px 0}
 .nextbar .cells a b{font-weight:800}
-/* One line, always: the title truncates with an ellipsis rather than wrapping the bar taller */
-.nextbar .cells a.next > span:first-child{min-width:0}
+/* One line, always: the title truncates with an ellipsis rather than wrapping the bar taller.
+   3A (2026-09-26): min-width:0 must sit on the flex CELL too, or the nowrap title's
+   min-content width pushes the arrow off the right edge at narrow widths. */
+.nextbar .cells a.next{min-width:0}
+.nextbar .cells a.next > span:first-child{flex:1;min-width:0}
 .nextbar .nt{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nextbar .cells a.prev{flex:0 0 auto;justify-content:center;color:var(--parchment);border-right:2px solid rgba(247,240,225,.35);margin-right:12px;padding-right:14px}
 .nextbar .cells a.next{color:var(--parchment);justify-content:space-between}
@@ -171,6 +180,11 @@ footer.site a{color:var(--parchment)}
 footer.site{margin-top:3.4em;background:var(--cocoa);color:var(--parchment);border-top:3px solid var(--ink)}
 footer.site .wrap{padding:26px 20px;font-size:16px;line-height:1.8}
 .share{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
+.shstat{margin:8px 0 0;font-size:15px;font-weight:700;color:var(--cocoa)}
+.shstat:empty{display:none}
+.shman{margin:8px 0 0;font-size:15px}
+.shman input{width:100%;margin-top:6px;font:15px/1.4 'Archivo',Arial,sans-serif;padding:10px;
+  border:2px solid var(--ink);background:var(--mat);color:var(--ink)}
 .share h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red-deep);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .share p{font-size:16px;color:var(--cocoa);margin:0 0 10px}
 .share .row{display:flex;gap:10px;flex-wrap:wrap}
@@ -264,7 +278,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <a class="brand" href="../index.html"><img src="../assets/seal.jpg" width="119" height="120" alt="Harrison Township Historical Society seal"><span class="bw"><span class="bt">Mullica Hill Walking Tour</span><span class="bs">Harrison Township Historical Society</span></span></a>
 <nav class="top" aria-label="Site"><a class="on" aria-current="page" href="../index.html">The Tour</a><a href="../map/index.html">Map</a><a href="../village/index.html">Eat &amp; Shop</a><a href="../about/index.html">About</a></nav>
 </div></header>
-<main class="wrap"><p class="kicker">Mullica Hill Historic Walking Tour</p><h1>Old Town Hall</h1><p class="sub">1871 · 62 South Main Street</p><p class="readmeta">Stop 1 of 13 · Core Loop · Start here, at the museum · <a href="../map/index.html#old-town-hall">Map</a></p><figure class="photo"><img src="../assets/old-town-hall-earlier-view.jpg" alt="A sepia view up the tree-lined unpaved street, the hall just visible among the trees." width="1200" height="979" fetchpriority="high" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>An earlier view of Old Town Hall from down Main Street.</figcaption></figure>
+<main class="wrap"><p class="kicker">Mullica Hill Historic Walking Tour</p><h1>Old Town Hall</h1><p class="sub">1871 · 62 South Main Street</p><p class="readmeta">Stop 1 of 13 · Core Loop · Start here, at the museum · <a href="../map/index.html#old-town-hall">Map</a> &middot; About 3 min read</p><p class="orient">Start anywhere. Follow the next-stop button to keep exploring.</p><p class="lede">This building once stood in the road&#39;s way. In 1920, the town moved it, whole.</p><figure class="photo"><img src="../assets/old-town-hall-earlier-view.jpg" alt="A sepia view up the tree-lined unpaved street, the hall just visible among the trees." width="1200" height="979" fetchpriority="high" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>An earlier view of Old Town Hall from down Main Street.</figcaption></figure>
 <p class="lede">In the spring of 1871, a group of Mullica Hill citizens decided the village needed a public meeting hall. None existed. So they pooled their money and built one.</p>
 <p>They organized a private stock company called the Town Hall Association and sold shares at five dollars each. Local men supplied everything: oak framing from one neighbor, cedar siding from another, the building itself put up by a local carpenter named Thomas L. Sharp. Total cost ran somewhere between thirty-five hundred and four thousand dollars. The Township of Harrison bought five hundred dollars of shares so it could hold elections and town meetings on the second floor. Twelve years later, in March of 1883, the Township bought out the rest of the stockholders, and the building finally belonged to the public it had been built to serve.</p>
 <p>For its first fifty years, the Hall sat closer to Woodstown Road than it does today. In the summer of 1920, the state was widening and paving Woodstown Road, and the Old Town Hall sat directly in the way. The township faced a choice. They could tear the building down. They could bend the road around it. Instead they moved the building. The whole structure was lifted off its foundation, set on rollers, and pushed back from the road to where it stands today. It was forty-nine years old that summer.</p>
@@ -275,8 +289,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <p>In 1971, the Harrison Township Committee appointed a group of citizens to found the Harrison Township Historical Society specifically to preserve this building, and the Society has occupied it ever since. Inside today is a comprehensive collection of Mullica Hill and Harrison Township artifacts: documents, photographs, household objects, agricultural implements, and pieces of the township's industrial past. The Society's exhibitions have won national and regional awards. The exhibits rotate by season, so a repeat visitor finds something different on each return.</p>
 <figure class="photo"><img src="../assets/old-town-hall-gavel.jpg" alt="A pale wooden gavel resting in a velvet-lined presentation case." width="1000" height="669" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>The ceremonial Senate gavel of Senator George W. F. Gaunt, gift of Marion Gaunt to the Society.</figcaption></figure>
 <figure class="photo"><img src="../assets/old-town-hall-today.jpg" alt="The hall today with twin porches over the sidewalk, marker signs out front, an autumn tree at the corner." width="1114" height="738" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge photograph" onerror="this.parentNode.classList.add('missing')"><figcaption>Old Town Hall today: the museum, the research library, and the start of this tour.</figcaption></figure>
-<div class="dyk"><h2>Did You Know</h2><p>The Town Hall was moved in 1920 without being taken apart. The entire structure was lifted off its foundation and set back from Woodstown Road as one piece, then placed where it stands today.</p></div><div class="branch"><h2>On the Way</h2><p class="act"><a href="../union-academy/index.html">Steps away on Woodstown Road: Waypoint A, The School That Moved &#8594;</a></p><p class="act"><a href="../spicer-folwell/index.html">A short walk away from the village center: Waypoint H, The Spicer House &#8594;</a></p></div><div class="ruled"><h2>Exhibits change with the seasons</h2><p>The Society mounts free changing exhibitions inside this building each spring and fall, and its monthly meetings are open to anyone. What is on right now, and when the next program is:</p><p class="act"><a href="https://www.harrisonhistorical.com/events">See Society events &#8594;</a></p></div><div class="ruled"><h2>While You Are Here</h2>
-<p>The objects and archives behind these stories live inside Old Town Hall Museum at 62 South Main Street. Admission is free, and <a href="https://www.harrisonhistorical.com/museum">current exhibit dates and hours are on the Society&#39;s museum page</a>.</p></div><div class="share"><h2>Send This Stop to Someone</h2><p>Know someone who grew up here, or someone who should visit? Two taps.</p><div class="row"><a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmhwalk.com%2Fold-town-hall%2F" data-u="https://mhwalk.com/old-town-hall/" rel="noopener" target="_blank" onclick="if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({url:this.dataset.u});return false;}">Share on Facebook</a><a href="https://mhwalk.com/old-town-hall/" data-t="Old Town Hall on the Mullica Hill Historic Walking Tour" data-u="https://mhwalk.com/old-town-hall/" onclick="var u=this.dataset.u;if(navigator.share){navigator.share({title:this.dataset.t,url:u});}else{if(navigator.clipboard){navigator.clipboard.writeText(u);}this.textContent='Link copied';}return false;">Share this stop</a></div><p class="tellline"><a href="mailto:hthsmhnj@gmail.com?subject=A%20story%20for%20the%20walking%20tour%3A%20Old%20Town%20Hall">Email the Society a story</a></p></div></main><div class="nextbar"><div class="cells"><a class="prev" aria-label="In reverse: Waypoint H The Spicer House" href="../spicer-folwell/index.html"><span class="ar l" aria-hidden="true">&#8592;</span></a><a class="next" href="../union-academy/index.html"><span><span class="nl">On the way &middot; 2 min</span><span class="nt">Waypoint A The School That Moved</span></span><span class="ar">&#8594;</span></a></div></div><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbhint">Pinch or double-tap to zoom. Swipe to close.</div><div class="lbcap"></div></div><script>
+<div class="dyk"><h2>Did You Know</h2><p>The Town Hall was moved in 1920 without being taken apart. The entire structure was lifted off its foundation and set back from Woodstown Road as one piece, then placed where it stands today.</p></div><div class="branch"><h2>On the Way</h2><p class="act"><a href="../union-academy/index.html">Steps away on Woodstown Road: Waypoint A, The School That Moved &#8594;</a></p><p class="act"><a href="../spicer-folwell/index.html">A short walk away from the village center: Waypoint H, The Spicer House &#8594;</a></p></div><div class="ruled"><h2>Exhibits change with the seasons</h2><p>The Society mounts free changing exhibitions inside this building each spring and fall, and its monthly meetings are open to anyone. What is on right now, and when the next program is:</p><p class="act"><a href="https://www.harrisonhistorical.com/events">See Society events &#8594;</a></p></div><div class="ruled musblock"><h2>Old Town Hall Museum</h2><p>62 South Main Street, Mullica Hill. Open weekend afternoons in its spring and fall exhibit seasons, and by appointment. Check current museum opening dates before visiting; <a href="https://www.harrisonhistorical.com/museum">current dates and hours are on the Society&#39;s museum page</a>. Admission is free.</p><p>If the museum is closed when you visit, the outdoor tour and the village&#39;s shops and restaurants are open to you all the same.</p></div><div class="share"><h2>Send This Stop to Someone</h2><p>Know someone who grew up here, or someone who should visit? Two taps.</p><div class="row"><a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmhwalk.com%2Fold-town-hall%2F" rel="noopener" target="_blank">Share on Facebook</a><a href="https://mhwalk.com/old-town-hall/" data-share="1" data-t="Old Town Hall on the Mullica Hill Historic Walking Tour" data-u="https://mhwalk.com/old-town-hall/">Share this stop</a></div><p class="shstat" role="status" aria-live="polite"></p><p class="shman" hidden><label>Copy this link: <input type="text" readonly value="https://mhwalk.com/old-town-hall/"></label></p><p class="tellline"><a href="mailto:hthsmhnj@gmail.com?subject=A%20story%20for%20the%20walking%20tour%3A%20Old%20Town%20Hall">Email the Society a story</a></p></div><script>(function(){if(window._mhs)return;window._mhs=1;document.querySelectorAll('.share').forEach(function(box){var st=box.querySelector('.shstat'),man=box.querySelector('.shman');var inp=man?man.querySelector('input'):null;function say(m){if(st)st.textContent=m;}function manual(){if(man){man.hidden=false;say('Copy the link below.');if(inp){try{inp.focus();inp.select();}catch(e){}}}}var g=box.querySelector('a[data-share]');if(!g)return;g.addEventListener('click',function(e){e.preventDefault();var u=g.getAttribute('data-u'),t=g.getAttribute('data-t')||document.title;if(navigator.share){navigator.share({title:t,url:u}).then(function(){say('');},function(err){if(err&&err.name==='AbortError')return;manual();});}else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){say('Link copied.');},function(){manual();});}else{manual();}});});})();</script></main><div class="nextbar"><div class="cells"><a class="prev" aria-label="In reverse: Waypoint H The Spicer House" href="../spicer-folwell/index.html"><span class="ar l" aria-hidden="true">&#8592;</span></a><a class="next" href="../union-academy/index.html"><span><span class="nl">On the way &middot; 2 min</span><span class="nt">Waypoint A The School That Moved</span></span><span class="ar">&#8594;</span></a></div></div><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbhint">Pinch or double-tap to zoom. Swipe to close.</div><div class="lbcap"></div></div><script>
 (function(){
  var lb=document.getElementById('lb'); if(!lb) return;
  var im=lb.querySelector('img'), cap=lb.querySelector('.lbcap'), xbtn=lb.querySelector('.lbx');
@@ -292,7 +305,20 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
   if(trigger){ try{ trigger.focus(); }catch(e){} trigger=null; } }
  function closeUI(){ if(open){ if(history.state && history.state.lb){ history.back(); } else { hide(); } } }
  window.addEventListener('popstate', function(){ if(open) hide(); });
- document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeUI(); });
+ /* UX run 2026-09-26 (3D): while the dialog is open, Tab and Shift+Tab stay inside it,
+    and focus that escapes to the background is pulled back to the first control. Escape,
+    Close, browser Back, focus restore to the trigger, and touch behavior are unchanged. */
+ document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ closeUI(); return; }
+  if(e.key==='Tab' && open){
+   var f=lb.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])');
+   if(!f.length) return;
+   var first=f[0], last=f[f.length-1];
+   if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+   else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+   else if(!lb.contains(document.activeElement)){ e.preventDefault(); first.focus(); }
+  }
+ });
  xbtn.addEventListener('click', closeUI);
  lb.addEventListener('click', function(e){ if(e.target===lb || e.target===wrap || e.target===cap) closeUI(); });
  document.querySelectorAll('figure.photo img').forEach(function(t){
