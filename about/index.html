@@ -171,14 +171,24 @@ a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .give h2{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin:0 0 8px;font-family:'Archivo',Arial,sans-serif}
 .give p{margin:0 0 10px;font-size:17px}
 .give small{display:block;font-size:13px;color:var(--cocoa);margin-bottom:10px}
-.give .btn{font-size:14px;white-space:nowrap;padding:12px 18px}
-.flinks{margin:10px 0 0;font-size:16px}
-.flinks a{display:inline-block;padding:8px 4px}
+.give .btn{font-size:14px;white-space:nowrap;padding:12px 18px;margin-bottom:0}
+.give p:last-child{margin-bottom:0}
 footer.site a{color:var(--parchment)}
+/* Footer pass 2026-09-27: compact identity row, address block, and wrapping link row
+   with 44px tap targets. No separators, no cards, existing tokens only. */
+.fid{display:flex;align-items:center;gap:12px}
+.fseal{width:38px;height:38px;flex:none}
+.fidt{margin:0;line-height:1.35}
+.fpre{display:block;font-size:14px;opacity:.85}
+.fsoc{font-weight:800;font-size:16px;display:inline-block;padding:3px 0}
+.faddr{margin:12px 0 0;font-size:15px;line-height:1.6;opacity:.92}
+.faward{margin:12px 0 0;font-size:14px;opacity:.85}
+.fnav{display:flex;flex-wrap:wrap;gap:0 24px;margin:6px 0 0}
+.fnav a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;font-size:16px}
 .dyk.small{margin-top:14px}
 .privacy h2{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:22px;margin:1.6em 0 .4em}
-footer.site{margin-top:3.4em;background:var(--cocoa);color:var(--parchment);border-top:3px solid var(--ink)}
-footer.site .wrap{padding:26px 20px;font-size:16px;line-height:1.8}
+footer.site{margin-top:2.6em;background:var(--cocoa);color:var(--parchment);border-top:3px solid var(--ink)}
+footer.site .wrap{padding:22px 20px;font-size:16px;line-height:1.6}
 .share{border-top:2px solid var(--ink);margin:2em 0 0;padding-top:16px}
 .shstat{margin:8px 0 0;font-size:15px;font-weight:700;color:var(--cocoa)}
 .shstat:empty{display:none}
@@ -284,7 +294,7 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
 <p>The village grew fastest between about 1780 and 1830, nearly all of it along South Main Street, where the shops and trades gathered. North Main stayed farmland, and was not cut into town lots until the middle of the 19th century or later. The railroad arrived in 1889 and made the village one of the busiest produce shipping points in the region, a boom you can still read in the warehouse, the feed store, and the bank on this tour.</p>
 <p>In 1991 the whole village was entered on the National and New Jersey Registers of Historic Places, and the next year Harrison Township made it a local historic district.</p>
 <p>This tour is presented by the Harrison Township Historical Society, founded in 1971 to preserve Old Town Hall, where the tour begins and where the Society's museum and research library are open to visitors. Nearly all photographs on these pages are drawn from the Society's collections and from its 2018 book, <em>Images of America: Mullica Hill and Old Harrison Township</em>, by James F. Turk and Karen E. Heritage, available at the museum.</p>
-<div class="dyk"><h2>Did You Know</h2><p>The family name outran the family. The Mullica River, thirty miles southeast in the Pine Barrens, carries the same name; the family&#39;s 1930 historian remarked that Eric Mullica left his name on both the river and the hill.</p></div><p class="readmeta" style="margin-top:2em">Sources: the Society&#39;s collections; <em>Images of America: Mullica Hill and Old Harrison Township</em> (2018); the Mullica Hill Historic District National Register nomination (1991); and the research files the Society keeps for each stop.</p><a class="card" href="../old-town-hall/index.html"><b>Begin the Tour</b><span>Stop 1 · Old Town Hall &#8594;</span></a><a class="card" href="../village/index.html"><b>Make a Day of It</b><span>Eat &amp; Shop on Main Street &#8594;</span></a></main><footer class="site"><div class="wrap">Presented by the <a href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a> · Old Town Hall Museum · 62 South Main Street, Mullica Hill, NJ<br>Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.<p class="flinks"><a href="https://www.harrisonhistorical.com/">The Society</a> · <a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a> · <a href="https://www.harrisonhistorical.com/support">Support the Society</a> · <a href="../index.html">Tour Home</a> · <a href="../privacy/index.html">Privacy</a></p></div></footer><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbhint">Pinch or double-tap to zoom. Swipe to close.</div><div class="lbcap"></div></div><script>
+<div class="dyk"><h2>Did You Know</h2><p>The family name outran the family. The Mullica River, thirty miles southeast in the Pine Barrens, carries the same name; the family&#39;s 1930 historian remarked that Eric Mullica left his name on both the river and the hill.</p></div><p class="readmeta" style="margin-top:2em">Sources: the Society&#39;s collections; <em>Images of America: Mullica Hill and Old Harrison Township</em> (2018); the Mullica Hill Historic District National Register nomination (1991); and the research files the Society keeps for each stop.</p><a class="card" href="../old-town-hall/index.html"><b>Begin the Tour</b><span>Stop 1 · Old Town Hall &#8594;</span></a><a class="card" href="../village/index.html"><b>Make a Day of It</b><span>Eat &amp; Shop on Main Street &#8594;</span></a></main><footer class="site"><div class="wrap"><div class="fid"><img class="fseal" src="../assets/seal.jpg" alt="" width="38" height="38" loading="lazy"><p class="fidt"><span class="fpre">Presented by</span><a class="fsoc" href="https://www.harrisonhistorical.com/">Harrison Township Historical Society</a></p></div><p class="faddr">Old Town Hall Museum<br>62 South Main Street &middot; Mullica Hill, NJ</p><p class="faward">Recipient of the 2023 Albert B. Corey Award from the American Association for State and Local History.</p><nav class="fnav" aria-label="Footer"><a href="https://www.harrisonhistorical.com/museum">Museum info</a><a href="https://www.harrisonhistorical.com/support">Support</a><a href="https://www.facebook.com/harrisonhistorical/" rel="noopener">Facebook</a><a href="../index.html">Tour Home</a><a href="../privacy/index.html">Privacy</a></nav></div></footer><div id="lb" role="dialog" aria-modal="true" aria-label="Photograph"><button class="lbx" aria-label="Close">&#215;</button><div class="lbwrap"><img alt=""></div><div class="lbhint">Pinch or double-tap to zoom. Swipe to close.</div><div class="lbcap"></div></div><script>
 (function(){
  var lb=document.getElementById('lb'); if(!lb) return;
  var im=lb.querySelector('img'), cap=lb.querySelector('.lbcap'), xbtn=lb.querySelector('.lbx');
