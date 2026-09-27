@@ -24,8 +24,10 @@ header.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;alig
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:4px 0;min-height:44px}
 .brand img{width:38px;height:38px;border-radius:50%;border:2px solid var(--ink)}
 .brand .bw{display:flex;flex-direction:column;gap:1px}
-.brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1;white-space:nowrap}
-.brand .bs{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cocoa);white-space:nowrap}
+/* R06 (2026-09-27): no nowrap on the brand lines. At ordinary size both fit one line and
+   render identically; under text enlargement they wrap instead of overflowing. */
+.brand .bt{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:16px;line-height:1.1}
+.brand .bs{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cocoa)}
 nav.top{display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center}
 nav.top a{font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);white-space:nowrap;
   background:var(--mat);border:2px solid var(--ink);padding:9px 16px;box-shadow:2px 2px 0 var(--ink)}
@@ -108,6 +110,8 @@ a.mapline:hover b{color:var(--ink)}
 #map{position:relative}
 .mapfail{padding:22px 18px;font-size:17px;line-height:1.55}
 .mapfail a{color:var(--red-deep);font-weight:800}
+/* R04: higher specificity than every #map sizing rule, including the map page override. */
+#map.mapfailed{height:auto;min-height:0;max-height:none}
 #map .locbtn{position:absolute;top:110px;left:10px;z-index:5}
 .layerbox{position:absolute;top:10px;right:10px;z-index:5;background:var(--mat);border:2px solid var(--ink);padding:4px 12px;font-family:'Archivo',Arial,sans-serif;font-size:15px;font-weight:600}
 .layerbox label{display:block;padding:10px 2px;cursor:pointer}
@@ -233,6 +237,8 @@ footer.site .wrap{padding:22px 20px;font-size:16px;line-height:1.6}
 .routeblurb{color:var(--cocoa);font-size:16px;margin:0 0 12px}
 ol.stops,ul.stops{list-style:none;margin:0 0 8px;padding:0}
 .stops li{border-bottom:2px solid var(--ink)}
+.stops li.grp{border-bottom:0;padding:16px 4px 4px;font-size:13px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep)}
 .stops li:first-child{border-top:2px solid var(--ink)}
 .stops a{display:flex;gap:14px;align-items:center;padding:12px 4px;text-decoration:none;color:var(--ink)}
 .stops a:hover{background:var(--mat)}
@@ -302,11 +308,23 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
  var sc=1, tx=0, ty=0, open=false, trigger=null;
  function apply(){ im.style.transform='translate('+tx+'px,'+ty+'px) scale('+sc+')'; }
  function reset(){ sc=1; tx=0; ty=0; apply(); }
+ /* R07 (2026-09-27): while the dialog is open, every other top-level region is inert so
+    focus and interaction cannot escape into the background. Pre-existing inert states
+    are remembered and restored exactly on close. */
+ function setbg(on){ try{
+  var kids=document.body.children;
+  for(var i=0;i<kids.length;i++){ var k=kids[i];
+   if(k===lb || k.tagName==='SCRIPT' || k.tagName==='STYLE') continue;
+   if(on){ if(k._lbpi===undefined){ k._lbpi=(k.inert===true); } k.inert=true; }
+   else{ if(k._lbpi===false){ k.inert=false; } delete k._lbpi; }
+  } }catch(e){} }
  function show(src, text){ im.src=src; cap.textContent=text||''; reset();
   lb.classList.add('open'); document.body.style.overflow='hidden'; open=true;
+  setbg(true);
   try{ xbtn.focus(); }catch(e){}
   try{ history.pushState({lb:1}, ''); }catch(e){} }
  function hide(){ lb.classList.remove('open'); document.body.style.overflow=''; open=false; im.src=''; lb.style.opacity=''; im.style.transition='';
+  setbg(false);
   if(trigger){ try{ trigger.focus(); }catch(e){} trigger=null; } }
  function closeUI(){ if(open){ if(history.state && history.state.lb){ history.back(); } else { hide(); } } }
  window.addEventListener('popstate', function(){ if(open) hide(); });
