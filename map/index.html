@@ -302,6 +302,15 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
   return;
  }
  map.addControl(new maplibregl.AttributionControl({compact:true}));
+ /* Owner 2026-09-27: the compact attribution opens expanded on load and covers the southern
+    pins; collapse it once loaded. It stays one tap away on the (i), which keeps the
+    OSM/OpenMapTiles attribution requirement satisfied. */
+ map.on('load',function(){var at=document.querySelector('.maplibregl-ctrl-attrib');
+  if(at){at.classList.remove('maplibregl-compact-show');at.removeAttribute('open');}});
+ /* Owner 2026-09-27: the village is finite, so the map is too. Pan and zoom stay inside
+    the route's bounds plus about a kilometer of breathing room; no world-wide wandering. */
+ map.setMaxBounds([[B.getWest()-0.012,B.getSouth()-0.009],[B.getEast()+0.012,B.getNorth()+0.009]]);
+ map.setMinZoom(13);
  map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-left');
  var failed=0;map.on('error',function(){failed++;if(failed===4){var n=document.getElementById('mapnote');if(n){n.textContent='The street map needs an internet connection; the pins and the list below still work.';n.style.display='block';}}});
  function dirs(lat,lng){return 'https://www.google.com/maps/dir/?api=1&destination='+lat+','+lng+'&travelmode=walking';}
@@ -362,11 +371,16 @@ h3.vcat{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;marg
   if(!navigator.geolocation){b.textContent='No location on this device';return;}
   b.textContent='Finding you...';
   navigator.geolocation.getCurrentPosition(function(p){
+   var lng=p.coords.longitude,lat=p.coords.latitude;
+   /* With the map locked to the village, someone checking from elsewhere gets a plain
+      answer instead of the view silently snapping to the map edge. */
+   var mb=map.getMaxBounds();
+   if(mb&&!mb.contains([lng,lat])){b.textContent='You are outside the map area';return;}
    b.textContent='Where am I?';
    if(window._me){window._me.remove();}
    var el=document.createElement('div');el.className='medot';
-   window._me=new maplibregl.Marker({element:el}).setLngLat([p.coords.longitude,p.coords.latitude]).addTo(map);
-   map.flyTo({center:[p.coords.longitude,p.coords.latitude],zoom:17});
+   window._me=new maplibregl.Marker({element:el}).setLngLat([lng,lat]).addTo(map);
+   map.flyTo({center:[lng,lat],zoom:17});
   },function(){b.textContent='Location unavailable';});
  });
  function focusHash(){var h=(location.hash||'').replace('#','');
