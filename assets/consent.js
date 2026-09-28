@@ -121,7 +121,7 @@
             if (!timer) timer = setTimeout(function () {
               if (document.visibilityState === 'visible' && !choiceSeen) {
                 choiceSeen = true; io.disconnect();
-                gtag('event', 'route_choice_view', { stop_slug: SLUG || 'old-mill', canonical_path: canonicalPath() });
+                gtag('event', 'route_choice_view', { stop_slug: SLUG || 'warehouse', canonical_path: canonicalPath() });
               }
             }, 1000);
           } else if (timer) { clearTimeout(timer); timer = null; }
@@ -145,8 +145,8 @@
             routeSel = true;
             gtag('event', 'route_select', {
               route: mh === 'route-longer' ? 'longer' : 'shorter',
-              from_stop: 'old-mill',
-              to_stop: mh === 'route-longer' ? 'the-bridge' : 'hoffman-foundry'
+              from_stop: 'warehouse',
+              to_stop: mh === 'route-longer' ? 'the-bridge' : 'old-mill'
             });
           }
           return;
