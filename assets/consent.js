@@ -1,11 +1,12 @@
-/* MHWalk consent-first analytics (owner brief 2026-09-28).
-   Nothing below runs a network request until the visitor taps "Allow analytics".
-   "No thanks", no choice, or unreadable storage all leave the page analytics-free:
-   no gtag.js, no pings, nothing queued for later replay.
-   Preference: localStorage "mh_analytics" = {"c":"granted"|"denied","t":ms}, honored
-   for 12 months, then asked again. The footer "Analytics choices" link reopens the
-   choice on every page, and choosing "No thanks" after a grant deletes the GA cookies
-   this site set and reloads to the unloaded state.
+/* MHWalk analytics, opt-out model (owner ruling 2026-09-28, replacing the earlier
+   consent-first draft at the owner's direction). Analytics loads by default with all
+   advertising signals denied; the footer "Analytics choices" link on every page opens
+   the choice panel, and "No thanks" stops collection, deletes the GA cookies this site
+   set, reloads to the unloaded state, and is remembered on that browser until changed
+   (a declined choice never expires on its own). While declined, nothing loads, no
+   request leaves the page, and any lingering GA cookies are re-swept on every visit.
+   Preference: localStorage "mh_analytics" = {"c":"granted"|"denied","t":ms}; absence
+   means the default (on); unreadable storage falls back to the default.
    Events (single manual page_view strategy; enhanced history/outbound collection is
    OFF at the stream): page_view, route_choice_view, route_select, next_stop_click,
    outbound_action. Parameters are bounded values from this site's own markup: slugs,
@@ -16,7 +17,6 @@
   var GID = document.body.getAttribute('data-ga');
   if (!GID) return;
   var KEY = 'mh_analytics';
-  var TTL = 365 * 24 * 60 * 60 * 1000; /* 12 months, documented in Privacy */
   var KIND = document.body.getAttribute('data-mhkind') || 'page';
   var SLUG = document.body.getAttribute('data-mhslug') || '';
   var MAIN = 'https://www.harrisonhistorical.com';
@@ -24,9 +24,9 @@
   function readPref() {
     try {
       var v = JSON.parse(localStorage.getItem(KEY) || 'null');
-      if (v && (v.c === 'granted' || v.c === 'denied') && v.t && (Date.now() - v.t) < TTL) return v.c;
+      if (v && (v.c === 'granted' || v.c === 'denied')) return v.c; /* an opt-out never expires on its own */
     } catch (e) { }
-    return null; /* unreadable or expired: no analytics, ask again */
+    return null; /* no stored choice or unreadable storage: the default applies */
   }
   function writePref(c) {
     try { localStorage.setItem(KEY, JSON.stringify({ c: c, t: Date.now() })); } catch (e) { }
@@ -68,7 +68,7 @@
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     gtag('consent', 'default', {
       ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
-      analytics_storage: 'granted' /* the one thing the visitor just allowed */
+      analytics_storage: 'granted' /* analytics only; every advertising signal above stays denied */
     });
     gtag('js', new Date());
     var cfg = {
@@ -216,20 +216,23 @@
     d.className = 'mhc'; d.id = 'mhc';
     d.setAttribute('role', 'region');
     d.setAttribute('aria-label', 'Analytics choice');
-    var state = withState ? (readPref() === 'granted'
-      ? '<p><b>Analytics is currently on.</b></p>' : '<p><b>Analytics is currently off.</b></p>') : '';
+    var state = (readPref() === 'denied')
+      ? '<p><b>Analytics is currently off on this browser.</b></p>'
+      : '<p><b>Analytics is currently on.</b></p>';
     d.innerHTML = state +
-      '<p>May the Society count visits and taps on this free tour? Optional, and nothing loads unless you allow it. ' +
+      '<p>The Society counts visits and taps to keep this free tour worth maintaining. Turn it off here any time. ' +
       '<a href="' + (KIND === 'privacy' ? '#analytics' : (KIND === 'home' ? 'privacy/index.html' : '../privacy/index.html')) + '">Privacy</a></p>' +
       '<button type="button" class="mhcb yes">Allow analytics</button>' +
       '<button type="button" class="mhcb no">No thanks</button>';
     var main = document.querySelector('main.wrap') || document.body;
     main.insertBefore(d, main.firstChild);
     d.querySelector('.yes').addEventListener('click', function () {
+      window['ga-disable-' + GID] = false; /* a same-page decline-then-re-allow measures again */
       writePref('granted'); d.remove(); load();
     });
     d.querySelector('.no').addEventListener('click', function () {
       var wasOn = loaded;
+      window['ga-disable-' + GID] = true; /* stops any queued or unload-time hit at once */
       writePref('denied'); deleteGaCookies(); d.remove();
       if (wasOn) location.reload(); /* back to the unloaded state */
     });
@@ -247,9 +250,8 @@
   });
 
   var pref = readPref();
-  if (pref === 'granted') load();
-  else if (pref === null) banner(false);
-  else deleteGaCookies(); /* denied: nothing loads, no banner nag, and any GA cookies a
-     pre-withdrawal heartbeat re-set are swept on every denied-state page load; the
-     footer link remains the way back in */
+  if (pref === 'denied') deleteGaCookies(); /* declined: nothing loads, no request leaves
+     the page, and any GA cookies a pre-decline heartbeat re-set are swept on every
+     visit; the footer link remains the way back in */
+  else load(); /* the default and the stored re-allow both load, ads signals denied */
 })();
