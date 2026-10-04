@@ -74,7 +74,15 @@
     var cfg = {
       send_page_view: false, /* the single, manual page_view strategy */
       allow_google_signals: false,
-      allow_ad_personalization_signals: false
+      allow_ad_personalization_signals: false,
+      /* Measurement fix 2026-10-03: the tag-level page_location must be the SAME
+         canonical URL the manual page_view reports. Google's automatic engagement
+         events (user_engagement, the time-on-page signal) otherwise carry the raw
+         address, and internal links end in index.html, so a story page's reading
+         time landed on a phantom "/stop/index.html" row with zero views while the
+         real "/stop/" row showed zero seconds. One location for every hit puts
+         views, visitors, and time on the same row. */
+      page_location: location.origin + canonicalPath() + allowedQuery()
     };
     if (/[?&]mhdebug=1/.test(location.search)) cfg.debug_mode = true;
     gtag('config', GID, cfg);
